@@ -1,0 +1,11 @@
+@layout('layouts/simple')
+
+@section('home')
+  <h1>Login</h1>
+  <form accept="{{ route('sessions.store') }}" method="POST">
+      <input type="email" name="email" placeholder="Email">
+      <input type="password" name="password" placeholder="Password">
+      <button type="submit">Logar</button>
+      <a href="{{ route('createUser.create') }}">Não possui conta?</a>
+  </form>
+@endsection
