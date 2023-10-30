@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{Dev} Main</title>
-  @entryPointStyles('app') 
+  @entryPointStyles('home') 
   @entryPointScripts('app')
 </head>
 <body>
@@ -14,6 +14,8 @@
         @include('layouts/partials/navigation')
 
         @!section('home')
+
+        @!section('posts')
 
         @include('layouts/partials/footer')
     </main>

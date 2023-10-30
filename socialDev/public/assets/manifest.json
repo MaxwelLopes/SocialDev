@@ -2,5 +2,7 @@
   "assets/app.css": "http://localhost:8080/assets/app.css",
   "assets/app.js": "http://localhost:8080/assets/app.js",
   "assets/simple.css": "http://localhost:8080/assets/simple.css",
-  "assets/simple.js": "http://localhost:8080/assets/simple.js"
+  "assets/simple.js": "http://localhost:8080/assets/simple.js",
+  "assets/home.css": "http://localhost:8080/assets/home.css",
+  "assets/home.js": "http://localhost:8080/assets/home.js"
 }

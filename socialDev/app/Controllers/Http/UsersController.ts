@@ -18,7 +18,7 @@ export default class UsersController{
 
         console.log(email)
         console.log(password)
-        console.log(confirmpassword)
+        console.log(confirmpassword) 
 
         if(password != confirmpassword){
             return response.redirect().toRoute('users.create')

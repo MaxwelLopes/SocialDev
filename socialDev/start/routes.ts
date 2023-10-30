@@ -12,3 +12,5 @@ Route.post('createUser', 'usersController.store').as('createUser.store')
 
 // Pagina Home com Middleware de autenticação
 Route.get('/', 'HomeController.index').as('home.index').middleware('auth')  
+
+Route.post('/', 'PostsController.store').as('posts.store')
