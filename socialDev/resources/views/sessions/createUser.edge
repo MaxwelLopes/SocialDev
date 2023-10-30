@@ -1,11 +1,13 @@
 @layout('layouts/simple')
 
 @section('home')
-  <h1>Cadastrar</h1>
-  <form accept="{{ route('users.store') }}" method="POST">
-      <input type="email" name="email" placeholder="Email">
-      <input type="password" name="password" placeholder="Password">
-      <input type="password" name="confirmpassword" placeholder="ConfirmPassword">
-      <button type="submit">Cadastrar</button>
-    </form>
+  <div class="form-box">
+    <h1>Cadastrar</h1>
+    <form action="{{ route('users.store') }}" method="POST">
+        <input type="email" name="email" placeholder="Email">
+        <input type="password" name="password" placeholder="Password">
+        <input type="password" name="confirmpassword" placeholder="ConfirmPassword">
+        <button type="submit">Cadastrar</button>
+      </form>
+  </div>
 @endsection

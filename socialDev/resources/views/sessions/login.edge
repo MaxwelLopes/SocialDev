@@ -1,11 +1,13 @@
 @layout('layouts/simple')
 
 @section('home')
-  <h1>Login</h1>
-  <form accept="{{ route('sessions.store') }}" method="POST">
-      <input type="email" name="email" placeholder="Email">
-      <input type="password" name="password" placeholder="Password">
-      <button type="submit">Logar</button>
-      <a href="{{ route('createUser.create') }}">Não possui conta?</a>
-  </form>
+  <div class="form-box">
+    <h1>Login</h1>
+    <form action="{{ route('sessions.store') }}" method="POST">
+        <input type="email" name="email" placeholder="Email">
+        <input type="password" name="password" placeholder="Password">
+        <button type="submit">Logar</button>
+        <div class="cadastrar">Não possui conta? <a href="{{ route('createUser.create') }}"> Inscreva-se</a></div>
+    </form>
+  </div>
 @endsection
