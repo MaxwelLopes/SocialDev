@@ -4,5 +4,11 @@
   "assets/simple.css": "http://localhost:8080/assets/simple.css",
   "assets/simple.js": "http://localhost:8080/assets/simple.js",
   "assets/home.css": "http://localhost:8080/assets/home.css",
-  "assets/home.js": "http://localhost:8080/assets/home.js"
+  "assets/home.js": "http://localhost:8080/assets/home.js",
+  "assets/post.css": "http://localhost:8080/assets/post.css",
+  "assets/post.js": "http://localhost:8080/assets/post.js",
+  "assets/header.css": "http://localhost:8080/assets/header.css",
+  "assets/header.js": "http://localhost:8080/assets/header.js",
+  "assets/sidebar.css": "http://localhost:8080/assets/sidebar.css",
+  "assets/sidebar.js": "http://localhost:8080/assets/sidebar.js"
 }

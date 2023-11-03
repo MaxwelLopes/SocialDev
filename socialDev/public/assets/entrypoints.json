@@ -23,6 +23,30 @@
       "js": [
         "http://localhost:8080/assets/home.js"
       ]
+    },
+    "post": {
+      "css": [
+        "http://localhost:8080/assets/post.css"
+      ],
+      "js": [
+        "http://localhost:8080/assets/post.js"
+      ]
+    },
+    "header": {
+      "css": [
+        "http://localhost:8080/assets/header.css"
+      ],
+      "js": [
+        "http://localhost:8080/assets/header.js"
+      ]
+    },
+    "sidebar": {
+      "css": [
+        "http://localhost:8080/assets/sidebar.css"
+      ],
+      "js": [
+        "http://localhost:8080/assets/sidebar.js"
+      ]
     }
   }
 }

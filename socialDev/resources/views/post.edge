@@ -1,0 +1,25 @@
+@layout('layouts/main')
+
+@section('post')
+
+  @entryPointStyles('post')
+
+  @include('layouts/partials/sidebar')  
+
+  <div class="post">
+    <div class="creator">
+      <p id="user">{{ post.user }}</p>
+      <p id="data_post">{{ post.hour }} · {{ post.date}}</p>
+      <br>
+      <p id="title"> {{ post.title}} </p>
+    </div>
+    <div class="content">
+      <P>
+        {{ post.content }}
+      </P>
+    </div>
+  </div>
+  
+  @include('layouts/partials/logout')
+  
+@endsection

@@ -1,0 +1,64 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+body{
+  background-color: var(--color-background);
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.post {
+    position: fixed; 
+    left: 50vh;
+    top: 0px;
+    padding: 20px;
+    width: 100vh; 
+    height: 100%;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: transparent;
+    border-right: 1.5px solid var(--color-border);
+    border-left: 1.5px solid var(--color-border);
+  }
+  #title {
+    left: 0px;
+    margin-bottom: 10px;
+  }
+  
+  .content {
+    position: relative;
+    padding-top: 10px;
+    padding-right: 20px;
+    font-size: 0.9rem;
+    word-wrap: break-word;
+    color: var(--color-text);
+    overflow: auto; /* Adicione esta linha para habilitar a rolagem vertical */
+    max-height: 80%; /* Defina uma altura máxima para a div, ajuste conforme necessário */
+  }
+
+  #title{
+    font-size: 1.3rem;
+  }
+
+  .post a{
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+#user{
+  font-size: 25px;
+}
+
+#data_post{
+  right: 0px;
+  font-size: 9px;
+}
+
+.creator {
+  height: 10vh;
+}
+
+.creator p {
+    display: inline-block; 
+    text-align: center;
+}

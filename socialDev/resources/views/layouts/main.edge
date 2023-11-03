@@ -4,20 +4,29 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{Dev} Main</title>
-  @entryPointStyles('home') 
-  @entryPointScripts('app')
 </head>
 <body>
     <main>
-        @include('layouts/partials/header')
-
-        @include('layouts/partials/navigation')
-
-        @!section('home')
-
-        @!section('posts')
-
-        @include('layouts/partials/footer')
+      @!section('home')
+      @!section('post')
     </main>
 </body>
+<style>
+  :root {
+    --color-text: #333;
+    --color-background: f9f9f9;
+    --color-border: #ccc;
+    --color-1: #077bff; 
+    --color-2: #0251a5;
+  }
+
+  .dark-mode:root{
+    --color-text: #D7DBDC;
+    --color-background: black;
+    --color-border: #414141;
+    --color-1: #077bff; 
+    --color-2: #0251a5;
+  }
+</style>
 </html>
+

@@ -1,12 +1,12 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
+
+const { DateTime } = require('luxon');
+
 import Post from 'App/Models/Post'
+import User from 'App/Models/User'
 
 export default class PostsController {
-  public async index({view}: HttpContextContract) {
-      const posts = await Post.all();
-      return view.render('home', { posts })
-  }
-
+  public async index({}: HttpContextContract) {}
 
   public async create({}: HttpContextContract) {}
 
@@ -26,7 +26,18 @@ export default class PostsController {
     return response.redirect().toRoute('home.index')
   }
 
-  public async show({}: HttpContextContract) {}
+  public async show({ params, view }: HttpContextContract) {
+    const post = await Post.findOrFail(params.id)
+    
+    const users = await User.all();
+    const user = users.find(user => user.id === post.user_id)
+    post.user = user?.email;
+
+    post.hour = DateTime.fromISO(post.createdAt).toLocaleString({ hour: '2-digit', minute: '2-digit' });   
+    post.date = DateTime.fromISO(post.createdAt).toLocaleString({month: '2-digit', day: '2-digit', year: 'numeric'});
+
+    return view.render('post', { post });
+  }
 
   public async edit({}: HttpContextContract) {}
 
