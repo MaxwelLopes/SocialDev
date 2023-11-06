@@ -9,6 +9,8 @@
   "assets/post.js": "http://localhost:8080/assets/post.js",
   "assets/header.css": "http://localhost:8080/assets/header.css",
   "assets/header.js": "http://localhost:8080/assets/header.js",
-  "assets/sidebar.css": "http://localhost:8080/assets/sidebar.css",
-  "assets/sidebar.js": "http://localhost:8080/assets/sidebar.js"
+  "assets/sidebarL.css": "http://localhost:8080/assets/sidebarL.css",
+  "assets/sidebarL.js": "http://localhost:8080/assets/sidebarL.js",
+  "assets/sidebarR.css": "http://localhost:8080/assets/sidebarR.css",
+  "assets/sidebarR.js": "http://localhost:8080/assets/sidebarR.js"
 }

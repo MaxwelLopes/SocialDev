@@ -4,10 +4,64 @@
   <div class="form-box">
     <h1>Cadastrar</h1>
     <form action="{{ route('users.store') }}" method="POST">
-        <input type="email" name="email" placeholder="Email">
-        <input type="password" name="password" placeholder="Password">
-        <input type="password" name="confirmpassword" placeholder="ConfirmPassword">
-        <button type="submit">Cadastrar</button>
-      </form>
+      
+      {{--  campo nome  --}}
+      @if (errorMessages)
+        <div class="error-messages">
+          <ul>
+            @if(errorMessages.name)
+              @each ( message in errorMessages.name )
+                <li>{{ message }}</li>
+              @endeach
+            @endif
+          </ul>
+        </div>
+      @endif
+      <input type="name" name="name" placeholder="Nome" value="{{  name ? name : '' }}">
+      
+      {{--  campo email  --}}
+      @if (errorMessages)
+        <div class="error-messages">
+          <ul>
+            @if(errorMessages.email)
+              @each ( message in errorMessages.email )
+                <li>{{ message }}</li>
+              @endeach
+            @endif
+          </ul>
+        </div>
+      @endif
+      <input type="email" name="email" placeholder="Email" value="{{  email ? email : '' }}">
+      
+      {{--  campo senha  --}}
+      @if (errorMessages)
+        <div class="error-messages">
+          <ul>
+            @if(errorMessages.password)
+              @each ( message in errorMessages.password)
+                <li>{{ message }}</li>
+              @endeach
+            @endif
+          </ul>
+        </div>
+      @endif
+      <input type="password" name="password" placeholder="Password">
+      
+      {{--  campo confirmação senha  --}}
+      @if (errorMessages)
+        <div class="error-messages">
+          <ul>
+            @if(errorMessages.confirmpassword)
+              @each ( message in errorMessages.confirmpassword)
+                <li>{{ message }}</li>
+              @endeach
+            @endif
+          </ul>
+        </div>
+      @endif
+      <input type="password" name="confirmpassword" placeholder="ConfirmPassword">
+      
+      <button type="submit">Cadastrar</button>
+    </form>
   </div>
 @endsection

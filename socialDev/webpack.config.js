@@ -50,7 +50,8 @@ Encore.addEntry('simple', './resources/css/simple.css')
 Encore.addEntry('home', './resources/css/home.css')
 Encore.addEntry('post', './resources/css/post.css')
 Encore.addEntry('header', './resources/css/header.css')
-Encore.addEntry('sidebar', './resources/css/sidebar.css')
+Encore.addEntry('sidebarL', './resources/css/sidebarL.css')
+Encore.addEntry('sidebarR', './resources/css/sidebarR.css')
 
 /*
 |--------------------------------------------------------------------------

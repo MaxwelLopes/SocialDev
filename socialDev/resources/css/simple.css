@@ -24,6 +24,7 @@ input{
     border: 1px solid #ccc;
     border-radius: 10px;
     box-sizing: border-box;
+    outline: none;
 }
 
 button {
@@ -53,4 +54,15 @@ a:hover{
     font-weight: bolder;
     color: #0251a5;
 }
+
+.error-messages {
+    padding-left: 10px;
+    color: red;
+    font-size: 12px;
+}
+
+.error-messages ul {
+    margin: 0; /* Remove a margem padrão */
+    padding-left:10px; /* Remove o preenchimento padrão */
+  }
 

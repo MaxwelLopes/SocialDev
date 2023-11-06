@@ -12,15 +12,13 @@ body{
 
 .mais_recentes{
   position: fixed; 
-  left: 50vh; 
+  left: calc(20vw + 1px);
   top: 0;
-  width: 100vh; 
-  height: 10vh; 
+  width: 60vw; 
+  height: 7vh; 
   background-color: transparent; 
   padding: 0px; 
-  border-right: 1.5px solid var(--color-border);
   border-bottom: 1.5px solid var(--color-border);
-  border-left: 1.5px solid var(--color-border);
   color:#333;
   z-index: 9999;
   backdrop-filter: blur(5px);
@@ -28,52 +26,59 @@ body{
 
 .mais_recentes h3{
   text-align: center;
-  padding-top: 3vh;
+  padding-top: 1vh;
   color: var(--color-text);
 }
 
 .new-post {
   position: absolute; 
-  left: 50vh; 
-  top: 10vh; 
-  width: 100vh; 
-  height: 40vh; 
+  left: 20vw; 
+  top: 7vh;
+  width: 60vw; 
+  height: auto; 
   overflow-y: auto;
   border-right: 1.5px solid var(--color-border);
   border-bottom: 1.5px solid var(--color-border);
   border-left: 1.5px solid var(--color-border); 
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;  
 }
 
-.new-post input{
-  width: 90%;
-  margin: 10px;
+.new-post textarea{
+  display: block;
+  width: calc(100% - 20px);
   padding: 10px;
+  font-size: 0.9rem;
+  word-wrap: break-word;
+  color: var(--color-text);
   border: 1px solid var(--color-border);
   background-color: var(--color-background);
   color: var(--color-text);
   border-radius: 5px;
   font-size: 16px;
-  white-space: pre-wrap;
+  resize: none;
+  outline: none;
 }
 
-.new-post input::placeholder {
-  position: absolute;
-  top: 10px;
+.title{
+  padding: 10px;
 }
 
-.new-post .content{
-  height: 20vh;
+.title-input{
+  height: 30px;
+  padding: 10px;
+  white-space: pre-line;
 }
 
-.new-post .title{
-  top: 20vh;
-  width: 65vh;
+.content {
+  padding: 10px;
+}
+
+.content-input {
+  height: 80px;
+  padding: 10px;
 }
 
 .new-post button{
-  right: 20vh;
   width: 22vh;
   padding: 10px;
   background-color: var(--color-1);
@@ -84,15 +89,20 @@ body{
   transition: background-color 0.3s, color 0.3s;
 }
 
+.new-post .button{
+  padding-top: 10px;
+  text-align: right;
+}
+
 .new-post button:hover {
     background-color: var(--color-2);;
 }
   
 .posts {
     position:absolute; 
-    left: 50vh; 
-    top: 50vh; 
-    width: 100vh; 
+    left: 20vw; 
+    width: 60vw; 
+    top: calc(250px + 7vh);
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     background-color: transparent;
     border-right: 1.5px solid var(--color-border);
@@ -102,68 +112,71 @@ body{
 
   .posts p {
     font-size: 1.2rem;
-    font-weight: bold;
-    margin-bottom: 10px;
     color: var(--color-text);
   }
   
-  .posts ul {
+  .posts ul li {
     list-style: none;
-    padding: 0;
   }
 
   .posts a {
     text-decoration: none;
+    user-select: none;
+    user-select: text;
   }
   
   .post {
     background-color: transparent;
     border-bottom: 1px solid var(--color-border);
     padding: 15px;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  
-  .post h2 {
-    font-size: 1.5rem;
-    margin: 0;
-    color: var(--color-text);
-  }
-  
- #content {
-    font-size: 0.9rem;
-    word-wrap: break-word;
-    color: var(--color-text);
-  }
-
-  #title{
-    font-size: 1.3rem;
-  }
-
-  .post a{
-    text-decoration: none;
-    cursor: pointer;
   }
 
 #user{
-  font-size: 15px;
+  font-size: 1.3rem;
+  font-weight: bolder;
+}
+
+#title-post{
+  font-size: 1rem;
+  font-weight: bolder;
+}
+
+#content-post {
+  position: relative;
+  top: -15px;
+  font-size: 0.8rem;
+  color: var(--color-text);
+  white-space: pre-line;
 }
 
 #data_post{
+  padding: 0px;
+  margin: 0px;
   right: 0px;
   font-size: 9px;
 }
 
-  .mostrar_mais{
-    color:var(--color-1);
-  }
+.mostrar_mais{
+  color:var(--color-1);
+}
 
-  .mostrar_mais:hover{
-    text-decoration: underline;
-  }
-  
+.mostrar_mais:hover{
+  text-decoration: underline;
+}
+
   .create p {
     display: inline-block; 
     margin-right: 10px; 
   }
+
+  .error-messages {
+    position: absolute;
+    padding: 2px 0px 2px 0px;
+    margin: 0px;
+    padding-left: 10px;
+    color: var(--color-warning);
+    font-size: 12px;
+}
+  
   
 

@@ -9,6 +9,7 @@ Route.post('/login', 'SessionsController.store').as('sessions.store')
 Route.get('/logout', 'SessionsController.delete').as('sessions.delete')
 
 Route.get('createUser', 'usersController.create').as('createUser.create')
+Route.get('deleteUser', 'usersController.destroy').as('createUser.destroy')
 Route.post('createUser', 'usersController.store').as('createUser.store')
 
 // Pagina Home com Middleware de autenticação
@@ -17,3 +18,4 @@ Route.get('/', 'HomeController.index').as('home.index').middleware('auth')
 Route.post('/', 'PostsController.store').as('posts.store')
 
 Route.get('/post/:id', 'PostsController.show').as('posts.show')
+

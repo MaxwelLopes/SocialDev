@@ -15,7 +15,7 @@ export default class HomeController {
             post.date = DateTime.fromISO(post.createdAt).toLocaleString({month: '2-digit', day: '2-digit', year: 'numeric'});
 
             const user = users.find(user => user.id === post.user_id)
-            post.user = user?.email;
+            post.user = user?.name;
         });
         
         return view.render('home', {posts});

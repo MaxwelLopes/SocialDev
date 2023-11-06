@@ -40,12 +40,20 @@
         "http://localhost:8080/assets/header.js"
       ]
     },
-    "sidebar": {
+    "sidebarL": {
       "css": [
-        "http://localhost:8080/assets/sidebar.css"
+        "http://localhost:8080/assets/sidebarL.css"
       ],
       "js": [
-        "http://localhost:8080/assets/sidebar.js"
+        "http://localhost:8080/assets/sidebarL.js"
+      ]
+    },
+    "sidebarR": {
+      "css": [
+        "http://localhost:8080/assets/sidebarR.css"
+      ],
+      "js": [
+        "http://localhost:8080/assets/sidebarR.js"
       ]
     }
   }
