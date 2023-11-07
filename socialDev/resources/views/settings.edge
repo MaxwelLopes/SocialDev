@@ -1,0 +1,59 @@
+@layout('layouts/main')
+
+@section('settings')
+    @entryPointStyles('home')
+  
+    @include('layouts/partials/sidebarL')
+    
+    <div class="settings">
+        <div class="button">
+            <a href="{{ route('createUser.destroy') }}">
+                <div class="button"><button>Excluir Conta</button>
+            </a>
+        </div>
+
+        <div class="button">
+            <a href="{{ route('sessions.delete') }}">
+                <div class="button"><button>Sair</button>
+            </a>
+        </div>
+    </div>
+
+
+    @include('layouts/partials/sidebarR')
+
+
+    <style>        
+        .settings{
+            position: fixed;
+            display: flex;
+            left: 20vw;
+            width: 60vw;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .settings .button{
+            padding-top: 10px;
+        }
+    
+        .settings button{
+            width: 150px;
+            height: 60px;
+            background-color: var(--color-1);
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+            font-size: 20px;
+        }
+
+        .settings button:hover {
+            background-color: var(--color-2);;
+        }
+        
+    </style>
+@endsection

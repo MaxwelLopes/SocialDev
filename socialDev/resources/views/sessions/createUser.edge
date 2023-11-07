@@ -1,6 +1,8 @@
 @layout('layouts/simple')
 
 @section('home')
+@entryPointStyles('simple')
+
   <div class="form-box">
     <h1>Cadastrar</h1>
     <form action="{{ route('users.store') }}" method="POST">

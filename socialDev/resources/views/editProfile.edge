@@ -1,0 +1,144 @@
+@layout('layouts/main')
+
+@section('profile')
+  
+
+    @include('layouts/partials/sidebarL')
+
+    <div class="form-box">
+        <h1>Editar</h1>
+        <form action="{{ route('updateUser.update') }}" method="POST">
+          
+          {{--  campo nome  --}}
+          @if (errorMessages)
+            <div class="error-messages">
+              <ul>
+                @if(errorMessages.name)
+                  @each ( message in errorMessages.name )
+                    <li>{{ message }}</li>
+                  @endeach
+                @endif
+              </ul>
+            </div>
+          @endif
+          <input type="name" name="name" placeholder="Nome" value="{{ auth.user.name }}">
+          
+          {{--  campo email  --}}
+          @if (errorMessages)
+            <div class="error-messages">
+              <ul>
+                @if(errorMessages.email)
+                  @each ( message in errorMessages.email )
+                    <li>{{ message }}</li>
+                  @endeach
+                @endif
+              </ul>
+            </div>
+          @endif
+          <input type="email" name="email" placeholder="Email" value="{{  auth.user.email }}">
+          
+          {{--  campo senha  --}}
+          @if (errorMessages)
+            <div class="error-messages">
+              <ul>
+                @if(errorMessages.password)
+                  @each ( message in errorMessages.password)
+                    <li>{{ message }}</li>
+                  @endeach
+                @endif
+              </ul>
+            </div>
+          @endif
+          <input type="password" name="password" placeholder="Password">
+          
+          {{--  campo confirmação senha  --}}
+          @if (errorMessages)
+            <div class="error-messages">
+              <ul>
+                @if(errorMessages.confirmpassword)
+                  @each ( message in errorMessages.confirmpassword)
+                    <li>{{ message }}</li>
+                  @endeach
+                @endif
+              </ul>
+            </div>
+          @endif
+          <input type="password" name="confirmpassword" placeholder="ConfirmPassword">
+          
+          <button type="submit">Editar</button>
+        </form>
+      </div>
+
+
+    @include('layouts/partials/sidebarR')
+
+
+
+<style>
+    *{
+    margin: 0px;
+    padding: 0px;
+    }
+
+    body{
+        background-color: var(--color-background);
+        font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        padding: 0px;
+        margin: 0px; 
+    }
+
+    .form-box{
+        position: fixed; 
+        left: calc(20vw + 1px);
+        width: calc(60vw - 20px);
+        padding: 10px;
+        justify-content: center; /* Alinha horizontalmente ao centro */
+        align-items: center; /* Alinha verticalmente ao centro */
+    }
+
+    h1 {
+      font-size: 24px;
+      color: var(--color-text)
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+  input[type="name"],
+  input[type="email"],
+  input[type="password"] {
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  .error-messages ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .error-messages li {
+    color: red;
+  }
+
+  button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 10px 0;
+  }
+
+  button:hover {
+    background-color: #0056b3;
+  }
+
+</style>
+
+@endsection 

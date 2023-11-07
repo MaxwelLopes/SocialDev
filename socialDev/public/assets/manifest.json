@@ -12,5 +12,7 @@
   "assets/sidebarL.css": "http://localhost:8080/assets/sidebarL.css",
   "assets/sidebarL.js": "http://localhost:8080/assets/sidebarL.js",
   "assets/sidebarR.css": "http://localhost:8080/assets/sidebarR.css",
-  "assets/sidebarR.js": "http://localhost:8080/assets/sidebarR.js"
+  "assets/sidebarR.js": "http://localhost:8080/assets/sidebarR.js",
+  "assets/profile.css": "http://localhost:8080/assets/profile.css",
+  "assets/profile.js": "http://localhost:8080/assets/profile.js"
 }

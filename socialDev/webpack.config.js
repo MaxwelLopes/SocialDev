@@ -52,6 +52,7 @@ Encore.addEntry('post', './resources/css/post.css')
 Encore.addEntry('header', './resources/css/header.css')
 Encore.addEntry('sidebarL', './resources/css/sidebarL.css')
 Encore.addEntry('sidebarR', './resources/css/sidebarR.css')
+Encore.addEntry('profile', './resources/css/profile.css')
 
 /*
 |--------------------------------------------------------------------------
