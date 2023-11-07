@@ -13,11 +13,11 @@
   backdrop-filter: blur(5px);
 }
 
-a{
+.sidebarR a{
   text-decoration: none;
 }
 
-#btn-message {
+.sidebarR #btn-message {
   --text-color: var(--color-text);
   --bg-color-sup: #d2d2d2;
   --bg-color: var(--color-background);
@@ -27,7 +27,7 @@ a{
   --btn-transition: all 0.2s ease-out;
 }
 
-.button-message {
+.sidebarR .button-message {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -45,18 +45,18 @@ a{
   transition: var(--btn-transition);
 }
 
-.button-message:hover {
+.sidebarR .button-message:hover {
   height: 56px;
   padding: 8px 20px 8px 8px;
   background-color: var(--color-background);
   transition: var(--btn-transition);
 }
 
-.button-message:active {
+.sidebarR .button-message:active {
   transform: scale(0.99);
 }
 
-.content-avatar {
+.sidebarR .content-avatar {
   width: 30px;
   height: 30px;
   margin: 0;
@@ -64,12 +64,12 @@ a{
   position: relative;
 }
 
-.button-message:hover .content-avatar {
+.sidebarR .button-message:hover .content-avatar {
   width: 40px;
   height: 40px;
 }
 
-.avatar {
+.sidebarR .avatar {
   width: 100%;
   height: 100%;
   border-radius: 50%;
@@ -77,13 +77,13 @@ a{
   background-color: var(--bg-color-sup);
 }
 
-.user-img {
+.sidebarR .user-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.status-user {
+.sidebarR .status-user {
   position: absolute;
   width: 6px;
   height: 6px;
@@ -96,7 +96,7 @@ a{
   animation: active-status 2s ease-in-out infinite;
 }
 
-.button-message:hover .status-user {
+.sidebarR .button-message:hover .status-user {
   width: 10px;
   height: 10px;
   right: 1px;
@@ -104,7 +104,7 @@ a{
   outline: solid 3px var(--bg-hover-color);
 }
 
-.notice-content {
+.sidebarR .notice-content {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -114,7 +114,7 @@ a{
   color: var(--text-color);
 }
 
-.username {
+.sidebarR .username {
   letter-spacing: -6px;
   height: 0;
   opacity: 0;
@@ -122,7 +122,7 @@ a{
   transition: var(--btn-transition);
 }
 
-.user-id {
+.sidebarR .user-id {
   font-size: 12px;
   letter-spacing: -6px;
   height: 0;
@@ -131,7 +131,7 @@ a{
   transition: var(--btn-transition);
 }
 
-.lable-message {
+.sidebarR .lable-message {
   display: flex;
   align-items: center;
   opacity: 1;
@@ -139,7 +139,7 @@ a{
   transition: var(--btn-transition);
 }
 
-.button-message:hover .username {
+.sidebarR .button-message:hover .username {
   height: auto;
   letter-spacing: normal;
   opacity: 1;
@@ -147,7 +147,7 @@ a{
   transition: var(--btn-transition);
 }
 
-.button-message:hover .user-id {
+.sidebarR .button-message:hover .user-id {
   height: auto;
   letter-spacing: normal;
   opacity: 1;
@@ -155,17 +155,17 @@ a{
   transition: var(--btn-transition);
 }
 
-.button-message:hover .lable-message {
+.sidebarR .button-message:hover .lable-message {
   height: 0;
   transform: scaleY(0);
   transition: var(--btn-transition);
 }
 
-.lable-message, .username {
+.sidebarR .lable-message, .username {
   font-weight: 600;
 }
 
-.number-message {
+.sidebarR .number-message {
   display: flex;
   justify-content: center;
   align-items: center;
