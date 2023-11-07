@@ -1,7 +1,7 @@
 node_modules
 build
 coverage
-vscode
-DS_STORE
-env
+.vscode
+.DS_STORE
+.env
 tmp
