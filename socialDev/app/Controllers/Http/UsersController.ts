@@ -75,7 +75,7 @@ export default class UsersController{
 
     public async show({ view, auth}: HttpContextContract) {
         const id = auth.user?.id;
-        const posts = await Post.query().where('user_id', id).orWhereNull('user_id').orderBy('createdAt', 'desc') 
+        const posts = await Post.query().where('user_id', id).orderBy('createdAt', 'desc') 
         
         posts.forEach((post) => {    
             post.hour = DateTime.fromISO(post.createdAt).toLocaleString({ hour: '2-digit', minute: '2-digit' });   
