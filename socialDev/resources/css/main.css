@@ -1,0 +1,353 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+:root {
+    --color-text: #333;
+    --color-background: f9f9f9;
+    --color-border: #ccc;
+    --color-warning: red;
+    --color-1: #077bff; 
+    --color-2: #0251a5;
+  }
+
+.dark-mode:root{
+    --color-text: #D7DBDC;
+    --color-background: black;
+    --color-border: #555555;
+    --color-warning: red;
+    --color-1: #077bff; 
+    --color-2: #0251a5;
+}
+
+.main{
+    display: flex;
+    margin: 0px;
+    padding: 0px;
+    width: auto;
+    background-color: var(--color-background);
+}
+
+.main .sidebarL {
+    position:fixed;
+    display: flex;
+    margin: 0px;
+    padding: 0px;
+    justify-content: flex-start; 
+    width: 20vw;
+    height: 100vh; 
+    background-color: transparent; 
+    flex-direction: column;  
+    border-right: 1.5px solid var(--color-border);
+}
+
+.main .sidebarL h2{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: center;
+    padding: 10px;
+    color: var(--color-1);
+}
+  
+.main .sidebarL ul {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 18px;
+    list-style: none; 
+    padding: 0; 
+    text-align: center; 
+}
+  
+.main .sidebarL li {
+    margin: 10px 0; 
+}
+  
+.main .sidebarL .menu-list a {
+    text-decoration: none; 
+    color: var(--color-text); 
+    display: block; 
+    padding: 10px; 
+    border-radius: 5px; 
+}
+  
+.main .sidebarL li:hover {
+    background-color: #33333318; 
+}
+
+.main .sidebarL .user-info{
+    display: flex;
+    justify-content: center;
+}
+
+.main .sidebarL .user-info a{
+    justify-content: center;
+    text-decoration: none;
+}
+  
+.main .sidebarL .user-info #btn-message {
+    --text-color: var(--color-text);
+    --bg-color-sup: #d2d2d2;
+    --bg-color: var(--color-background);
+    --bg-hover-color: #ffffff;
+    --online-status: #00da00;
+    --font-size: 16px;
+    --btn-transition: all 0.2s ease-out;
+}
+  
+.main .sidebarL .user-info .button-message {
+    padding: 0px;
+    margin: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font: 400 var(--font-size) Helvetica Neue, sans-serif;
+    box-shadow: 0 0 2.17382px rgba(0,0,0,.049),0 1.75px 6.01034px rgba(0,0,0,.07),0 3.63px 14.4706px rgba(0,0,0,.091),0 22px 48px rgba(0,0,0,.14);
+    background-color: var(--bg-color);
+    border: 1px solid var(--color-border);
+    border-radius: 68px;
+    cursor: pointer;
+    padding: 6px 10px 6px 6px;
+    width: fit-content;
+    height: 40px;
+    overflow: hidden;
+    position: relative;
+    transition: var(--btn-transition);
+  }
+  
+.main .sidebarL .user-info .button-message:hover {
+    height: 56px;
+    padding: 8px 20px 8px 8px;
+    background-color: var(--color-background);
+    transition: var(--btn-transition);
+}
+  
+.main .sidebarL .user-info .button-message:active {
+    transform: scale(0.99);
+}
+  
+.main .sidebarL .user-info .content-avatar {
+    width: 30px;
+    height: 30px;
+    margin: 0;
+    transition: var(--btn-transition);
+    position: relative;
+}
+  
+.main .sidebarL .user-info .button-message:hover .content-avatar {
+    width: 40px;
+    height: 40px;
+}
+  
+.main .sidebarL .user-info .avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: var(--bg-color-sup);
+}
+  
+.main .sidebarL .user-info .user-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+  
+.main .sidebarL .user-info .status-user {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    right: 1px;
+    bottom: 1px;
+    border-radius: 50%;
+    outline: solid 2px var(--bg-color);
+    background-color: var(--online-status);
+    transition: var(--btn-transition);
+    animation: active-status 2s ease-in-out infinite;
+}
+  
+.main .sidebarL .user-info .button-message:hover .status-user {
+    width: 10px;
+    height: 10px;
+    right: 1px;
+    bottom: 1px;
+    outline: solid 3px var(--bg-hover-color);
+}
+  
+.main .sidebarL .user-info .notice-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding-left: 8px;
+    text-align: initial;
+    color: var(--text-color);
+}
+  
+.main .sidebarL .user-info .username {
+    letter-spacing: -6px;
+    height: 0;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: var(--btn-transition);
+}
+  
+.main .sidebarL .user-info .user-id {
+    font-size: 12px;
+    letter-spacing: -6px;
+    height: 0;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: var(--btn-transition);
+}
+  
+.main .sidebarL .user-info .lable-message {
+    display: flex;
+    align-items: center;
+    opacity: 1;
+    transform: scaleY(1);
+    transition: var(--btn-transition);
+}
+  
+.main .sidebarL .user-info .button-message:hover .username {
+    height: auto;
+    letter-spacing: normal;
+    opacity: 1;
+    transform: translateY(0);
+    transition: var(--btn-transition);
+}
+  
+.main .sidebarL .user-info .button-message:hover .user-id {
+    height: auto;
+    letter-spacing: normal;
+    opacity: 1;
+    transform: translateY(0);
+    transition: var(--btn-transition);
+}
+  
+.main .sidebarL .user-info .button-message:hover .lable-message {
+    height: 0;
+    transform: scaleY(0);
+    transition: var(--btn-transition);
+}
+  
+.main .sidebarL .user-info .lable-message, .username {
+    font-weight: 600;
+}
+  
+.main .sidebarL .user-info .number-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-left: 8px;
+    font-size: 12px;
+    width: 16px;
+    height: 16px;
+    background-color: var(--bg-color-sup);
+    border-radius: 20px;
+}
+
+.main .center{
+    display: flex;
+    margin: 0px;
+    padding: 0px;
+    height: 100vh;
+    flex-direction: column;
+}
+
+.main .sidebarR{
+    position: fixed;
+    right: 0;
+    justify-content: center;
+    display: flex;
+    margin: 0px;
+    padding: 0px;
+    width: 20vw;
+    height: 100vh;
+    background-color: transparent;  
+    border-left: 1.5px solid var(--color-border);
+}
+
+.main .sidebarR .dark-mode {
+    display: flex;
+    padding: 10px;
+}
+
+/* The switch - the box around the slider */
+.main .sidebarR .dark-mode .switch {
+    font-size: 13px;
+    position: relative;
+    display: inline-block;
+    width: 3.5em;
+    height: 1.5em;
+}
+  
+  /* Hide default HTML checkbox */
+.main .sidebarR .dark-mode .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+  
+  /* The slider */
+.main .sidebarR .dark-mode .slider {
+    position: absolute;
+    cursor: pointer;
+    inset: 0;
+    border: 2px solid var(--color-border);
+    border-radius: 50px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+  
+.main .sidebarR .dark-mode .slider:before {
+    position: absolute;
+    content: "";
+    height: 0.8em;
+    width: 1.4em;
+    left: 0.2em;
+    bottom: 0.2em;
+    background-color: var(--color-1);
+    border-radius: inherit;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+}
+  
+.main .sidebarR .dark-mode .switch input:checked + .slider {
+    box-shadow: 0 0 10px var(--color-1);;
+    border: 2px solid var(--color-2);;
+}
+  
+.main .sidebarR .dark-mode .switch input:checked + .slider:before {
+    transform: translateX(1.5em);
+}
+
+.main .sidebarR .dark-mode .switch {
+    margin-left: 10px; /* Espaço entre o texto e a caixa de seleção */
+}
+
+.main .sidebarR .dark-mode p {
+    color: var(--color-text);
+}
+  
+
+  
+/*==============================================*/
+@keyframes active-status {
+    0% {
+      background-color: var(--online-status);
+    }
+  
+    33.33% {
+      background-color: #93e200;
+    }
+  
+    66.33% {
+      background-color: #93e200;
+    }
+  
+    100% {
+      background-color: var(--online-status);
+    }
+}
+  
+  

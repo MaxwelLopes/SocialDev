@@ -20,7 +20,6 @@ export default class UsersController{
         const name = request.input('name')
         const email = request.input('email')
         const password = request.input('password')
-        //const confirmpassword = request.input('confirmpassword')
 
         try{
             await request.validate(CreateUserValidator);

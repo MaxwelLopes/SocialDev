@@ -3,69 +3,43 @@
 @section('home')
   @entryPointStyles('home')
 
-  @include('layouts/partials/sidebarL')
-
-  <div class="mais_recentes">
-    <h3>Mais Recentes</h3>
-  </div>
-  <div class="new-post">
-    <h3></h3>
-    <form action="{{ route('posts.store') }}" method="POST">
-      <div class="title">
-        <textarea type="title" name="title" placeholder="Título" autocomplete="off" class="title-input"></textarea>
-        @if (errorMessages)
-          <div class="error-messages">
-            @if (errorMessages.title)
-              {{errorMessages.title}}
-            @endif
-          </div>
-        @endif
+  <div class="home">
+    <div class="timeline">
+      <div class="recent">
+        <h3>Mais Recentes</h3>
       </div>
-      
-      <div class="content">
-        <textarea type="content" name="content" placeholder="Compartilhe sua história para o mundo!" autocomplete="off" class="content-input"></textarea>
-        @if (errorMessages)
-          <div class="error-messages">
-            @if (errorMessages.content)
-              {{errorMessages.content}}
-            @endif
-          </div>
-        @endif
-        <div class="button"><button type="submit">Postar</button></div>
-      </div>
-      
-      
-
-    </form>
-  </div>
-  
-  <div class="posts">
-    <ul>
-      @each(post in posts)
-        <a href="{{ route('posts.show', { id: post.id }) }}">
-          <li>
-            <div class="post">
-              <div class="create">
-                <p id="user">{{ post.user }}</p>
-                <p id="data_post">{{ post.hour }} · {{ post.date}}</p>
-              </div>
-              <p id="title-post"> {{ post.title}} </p>
-              <P id="content-post">
-                {{ post.content.length > 200 ? post.content.slice(0, 201) + '...' : post.content }}
-                @if (post.content.length > 150)
-                  <p style="word-wrap: break-word;"></p>
-                  <a href="{{ route('posts.show', { id: post.id }) }}" class="mostrar_mais">Mostrar mais</a>
-                @endif
-              </P>
+      {{--  <div class="following">
+        <h3>Seguindo</h3>
+      </div>  --}}
+    </div>
+    <div class="new-post">
+      <form action="{{ route('posts.store') }}" method="POST">
+        <div class="title">
+          <textarea type="title" name="title" placeholder="Título" autocomplete="off" class="title-input"></textarea>
+          @if (errorMessages)
+            <div class="error-messages">
+              @if (errorMessages.title)
+                {{errorMessages.title}}
+              @endif
             </div>
-          </li>
-        </a>
-      @endeach
-    </ul>
+          @endif
+        </div>
+    
+        <div class="content">
+          <textarea type="content" name="content" placeholder="Compartilhe sua história para o mundo!" autocomplete="off" class="content-input"></textarea>
+          @if (errorMessages)
+            <div class="error-messages">
+              @if (errorMessages.content)
+                {{errorMessages.content}}
+              @endif
+            </div>
+          @endif
+          <div class="button"><button type="submit">Postar</button></div>
+        </div>
+      </form>
+    </div>
+    @include('layouts/partials/posts') 
   </div>
-
-  @include('layouts/partials/sidebarR')
-
 @endsection
 
 

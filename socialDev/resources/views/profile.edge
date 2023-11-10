@@ -2,41 +2,19 @@
 
 @section('profile')
     @entryPointStyles('profile')
-  
-
-    @include('layouts/partials/sidebarL')
-
     <div class="profile">
+      <div class="timeline"> 
+        {{auth.user.name}}
+      </div>
         <div class="presentation">
             <h1 class="name">{{auth.user.name}}</h1>
             <p class="email">{{auth.user.email}}</p>
-            <div class="button"><a href="{{ route('editProfile') }}"><button> EDITAR PERFIL </button></a></div>
+            <div class="button">
+              <a href="{{ route('editProfile') }}">
+                <button> EDITAR PERFIL </button>
+              </a>
+            </div>
         </div>
-
-        <div class="posts">
-            <ul>
-              @each(post in posts)
-                <a href="{{ route('posts.show', { id: post.id }) }}">
-                  <li>
-                    <div class="post">
-                      <div class="create">
-                        <p id="user">{{ post.user }}</p>
-                        <p id="data_post">{{ post.hour }} · {{ post.date}}</p>
-                      </div>
-                      <p id="title-post"> {{ post.title}} </p>
-                      <P id="content-post">
-                        {{ post.content.length > 200 ? post.content.slice(0, 201) + '...' : post.content }}
-                        @if (post.content.length > 150)
-                          <p style="word-wrap: break-word;"></p>
-                          <a href="{{ route('posts.show', { id: post.id }) }}" class="mostrar_mais">Mostrar mais</a>
-                        @endif
-                      </P>
-                    </div>
-                  </li>
-                </a>
-              @endeach
-            </ul>
-          </div>
-    </div>
-    @include('layouts/partials/sidebarR')
+        @include('layouts/partials/posts') 
+      </div>       
 @endsection 

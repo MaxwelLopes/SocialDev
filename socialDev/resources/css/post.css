@@ -9,19 +9,16 @@ body{
 }
 
 .post {
-    position: fixed; 
-    left: 20vw; 
-    width: 60vw;
-    height: 100%;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    background-color: transparent;
-    border-right: 1.5px solid var(--color-border);
-    border-left: 1.5px solid var(--color-border);
-  }
+  position: absolute;
+  left: 20vw;
+  right: 20vw;
+  align-items: flex-start;
+  flex-direction: column;
+}
 
 .creator {
-  height: 10vh;
   padding: 10px;
+  color: var(--color-text);
 }
 
 .creator p {
@@ -29,35 +26,30 @@ body{
     text-align: center;
 }
 
-.title {
-  text-align: left;
-  margin-bottom: 10px;
-  font-size: 1.3rem;
-}
-  
-.content {
-  position: relative;
-  top: -15px;
-  padding: 0px 10px 0px 10px;
-  font-size: 0.8rem;
-  color: var(--color-text);
-  white-space: pre-line;
-  user-select: text;
-  -webkit-user-select: auto; 
-  -moz-user-select: auto; 
-  user-select: auto; 
-}
-
-  .post a{
-    text-decoration: none;
-    cursor: pointer;
-  }
-
 #user{
-  font-size: 25px;
+  font-size: 1.3rem;
+  font-weight: bold;
 }
 
 #data_post{
   right: 0px;
   font-size: 9px;
 }
+
+.title {
+  font-size: 1rem; 
+  font-weight: bolder;
+  padding: 0px 10px 0px 10px;
+  color: var(--color-text);  
+}
+  
+.content {
+  position: relative;
+  padding: 10px;
+  top: -40px;
+  font-size: 0.8rem;
+  color: var(--color-text);
+  white-space: pre-line;
+  text-align: justify;
+}
+

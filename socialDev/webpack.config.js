@@ -46,13 +46,14 @@ Encore.setPublicPath('/assets')
 |
 */
 Encore.addEntry('app', './resources/js/app.js')
+Encore.addEntry('mainScript', './resources/js/main.js')
+
+Encore.addEntry('mainCss', './resources/css/main.css')
 Encore.addEntry('simple', './resources/css/simple.css')
 Encore.addEntry('home', './resources/css/home.css')
 Encore.addEntry('post', './resources/css/post.css')
-Encore.addEntry('header', './resources/css/header.css')
-Encore.addEntry('sidebarL', './resources/css/sidebarL.css')
-Encore.addEntry('sidebarR', './resources/css/sidebarR.css')
 Encore.addEntry('profile', './resources/css/profile.css')
+Encore.addEntry('posts', './resources/css/posts.css')
 
 /*
 |--------------------------------------------------------------------------

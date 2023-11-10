@@ -1,0 +1,26 @@
+@entryPointStyles('posts')
+
+<div class="posts">
+    <ul>
+      @each(post in posts)
+        <a href="{{ route('posts.show', { id: post.id }) }}">
+          <li>
+            <div class="post">
+              <div class="create">
+                  <p id="user">{{ post.user }}</p>
+                <p id="data_post">{{ post.hour }} · {{ post.date}}</p>
+              </div>
+              <p id="title-post"> {{ post.title}} </p>
+              <P id="content-post">
+                {{ post.content.length > 400 ? post.content.slice(0, 401) + '...' : post.content }}
+                @if (post.content.length > 400)
+                  <p style="word-wrap: break-word;"></p>
+                  <a href="{{ route('posts.show', { id: post.id }) }}" class="mostrar_mais">Mostrar mais</a>
+                @endif
+              </P>
+            </div>
+          </li>
+        </a>
+      @endeach
+    </ul>
+  </div>

@@ -8,6 +8,19 @@
         "http://localhost:8080/assets/app.js"
       ]
     },
+    "mainScript": {
+      "js": [
+        "http://localhost:8080/assets/mainScript.js"
+      ]
+    },
+    "mainCss": {
+      "css": [
+        "http://localhost:8080/assets/mainCss.css"
+      ],
+      "js": [
+        "http://localhost:8080/assets/mainCss.js"
+      ]
+    },
     "simple": {
       "css": [
         "http://localhost:8080/assets/simple.css"
@@ -32,36 +45,20 @@
         "http://localhost:8080/assets/post.js"
       ]
     },
-    "header": {
-      "css": [
-        "http://localhost:8080/assets/header.css"
-      ],
-      "js": [
-        "http://localhost:8080/assets/header.js"
-      ]
-    },
-    "sidebarL": {
-      "css": [
-        "http://localhost:8080/assets/sidebarL.css"
-      ],
-      "js": [
-        "http://localhost:8080/assets/sidebarL.js"
-      ]
-    },
-    "sidebarR": {
-      "css": [
-        "http://localhost:8080/assets/sidebarR.css"
-      ],
-      "js": [
-        "http://localhost:8080/assets/sidebarR.js"
-      ]
-    },
     "profile": {
       "css": [
         "http://localhost:8080/assets/profile.css"
       ],
       "js": [
         "http://localhost:8080/assets/profile.js"
+      ]
+    },
+    "posts": {
+      "css": [
+        "http://localhost:8080/assets/posts.css"
+      ],
+      "js": [
+        "http://localhost:8080/assets/posts.js"
       ]
     }
   }

@@ -10,44 +10,43 @@ body{
   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-.mais_recentes{
-  position: fixed; 
-  left: calc(20vw + 1px);
+.home .timeline{
+  position: fixed;
   top: 0;
-  width: 60vw; 
+  left: calc(20vw + 1.5px);
+  right: calc(20vw + 1.5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 7vh; 
-  background-color: transparent; 
-  padding: 0px; 
+  background-color: transparent;  
   border-bottom: 1.5px solid var(--color-border);
-  color:#333;
   z-index: 9999;
   backdrop-filter: blur(5px);
 }
 
-.mais_recentes h3{
-  text-align: center;
-  padding-top: 1vh;
+.home .timeline .recent h3{
   color: var(--color-text);
 }
 
-.new-post {
-  position: absolute; 
-  left: 20vw; 
+.home .new-post{
+  position: relative;
   top: 7vh;
-  width: 60vw; 
-  height: auto; 
-  overflow-y: auto;
-  border-right: 1.5px solid var(--color-border);
+  left: 20vw;
+  right: 20vw;
+  display: flex;
+  width:  calc(60vw - 18px);
   border-bottom: 1.5px solid var(--color-border);
-  border-left: 1.5px solid var(--color-border); 
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;  
 }
 
-.new-post textarea{
-  display: block;
-  width: calc(100% - 20px);
-  padding: 10px;
-  font-size: 0.9rem;
+.home .new-post form{
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.home .new-post textarea{
+  width: 100%;
+  box-sizing: border-box;
   word-wrap: break-word;
   color: var(--color-text);
   border: 1px solid var(--color-border);
@@ -59,26 +58,27 @@ body{
   outline: none;
 }
 
-.title{
+.home .title{
   padding: 10px;
 }
 
-.title-input{
-  height: 30px;
+.home .title-input{
+  height: 50px;
   padding: 10px;
   white-space: pre-line;
 }
 
-.content {
+.home .content {
   padding: 10px;
 }
 
-.content-input {
-  height: 80px;
+.home .content-input {
+  height: 100px;
   padding: 10px;
+  white-space: pre-line;
 }
 
-.new-post button{
+.home .new-post button{
   width: 22vh;
   padding: 10px;
   background-color: var(--color-1);
@@ -89,89 +89,18 @@ body{
   transition: background-color 0.3s, color 0.3s;
 }
 
-.new-post .button{
+.home .new-post .button{
   padding-top: 10px;
   text-align: right;
 }
 
-.new-post button:hover {
+.home .new-post button:hover {
     background-color: var(--color-2);;
 }
-  
-.posts {
-    position:absolute; 
-    left: 20vw; 
-    width: 60vw; 
-    top: calc(250px + 7vh);
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    background-color: transparent;
-    border-right: 1.5px solid var(--color-border);
-    border-bottom: 1.5px solid var(--color-border);
-    border-left: 1.5px solid var(--color-border);
-  }
 
-  .posts p {
-    font-size: 1.2rem;
-    color: var(--color-text);
-  }
-  
-  .posts ul li {
-    list-style: none;
-  }
-
-  .posts a {
-    text-decoration: none;
-    user-select: none;
-    user-select: text;
-  }
-  
-  .post {
-    background-color: transparent;
-    border-bottom: 1px solid var(--color-border);
-    padding: 15px;
-  }
-
-#user{
-  font-size: 1.3rem;
-  font-weight: bolder;
-}
-
-#title-post{
-  font-size: 1rem;
-  font-weight: bolder;
-}
-
-#content-post {
-  position: relative;
-  top: -15px;
-  font-size: 0.8rem;
-  color: var(--color-text);
-  white-space: pre-line;
-}
-
-#data_post{
-  padding: 0px;
-  margin: 0px;
-  right: 0px;
-  font-size: 9px;
-}
-
-.mostrar_mais{
-  color:var(--color-1);
-}
-
-.mostrar_mais:hover{
-  text-decoration: underline;
-}
-
-  .create p {
-    display: inline-block; 
-    margin-right: 10px; 
-  }
-
-  .error-messages {
+.home .error-messages {
     position: absolute;
-    padding: 2px 0px 2px 0px;
+    padding: 0px 0px 2px 0px;
     margin: 0px;
     padding-left: 10px;
     color: var(--color-warning);
