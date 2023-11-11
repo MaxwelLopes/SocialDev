@@ -18,12 +18,12 @@
               <li><a href="{{ route('home.index')}}">Página Inicial</a></li>
               <li><a href="#">Mensagens</a></li>
               <li><a href="#">Notificações</a></li>
-              <li><a href="{{ route('profileUser.show')}}">Perfil</a></li>
+              <li><a href="{{ route('profileUser.show', {id: auth.user.id})}}">Perfil</a></li> 
               <li><a href="{{ route('settings')}}">Cofigurações</a></li>
             </div>
              
             <div class="user-info">
-              <a href="{{ route('profileUser.show')}}">
+              <a href="{{ route('profileUser.show', {id: auth.user.id})}}">
                 <button id="btn-message" class="button-message">
                     <div class="content-avatar">
                         <div class="avatar">

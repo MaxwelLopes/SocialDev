@@ -4,16 +4,18 @@
     @entryPointStyles('profile')
     <div class="profile">
       <div class="timeline"> 
-        {{auth.user.name}}
+        {{user.name}}
       </div>
         <div class="presentation">
-            <h1 class="name">{{auth.user.name}}</h1>
-            <p class="email">{{auth.user.email}}</p>
-            <div class="button">
-              <a href="{{ route('editProfile') }}">
-                <button> EDITAR PERFIL </button>
-              </a>
-            </div>
+            <h1 class="name">{{user.name}}</h1>
+            <p class="email">{{user.email}}</p>
+            @if(edit)
+              <div class="button">
+                  <a href="{{ route('editProfile') }}">
+                    <button> EDITAR PERFIL </button>
+                  </a>
+              </div>
+            @endif
         </div>
         @include('layouts/partials/posts') 
       </div>       

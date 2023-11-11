@@ -72,17 +72,25 @@ export default class UsersController{
         return response.redirect().toRoute('home.index')
     }
 
-    public async show({ view, auth}: HttpContextContract) {
-        const id = auth.user?.id;
+    public async show({ params, view, auth }: HttpContextContract) {
+
+        const id = params.id;
+        const user = await User.findByOrFail('id', id);
+        
+        let edit = false;
+        if (id == auth.user.id) {
+            edit = true;
+        }
+        console.log(user);
         const posts = await Post.query().where('user_id', id).orderBy('createdAt', 'desc') 
         
         posts.forEach((post) => {    
             post.hour = DateTime.fromISO(post.createdAt).toLocaleString({ hour: '2-digit', minute: '2-digit' });   
             post.date = DateTime.fromISO(post.createdAt).toLocaleString({month: '2-digit', day: '2-digit', year: 'numeric'});
-            post.user = auth.user.name;
+            post.user = user.name;
         });
-        
-        return view.render('profile', {posts});
+
+        return view.render('profile', {posts, user, edit});
 
         
       }
