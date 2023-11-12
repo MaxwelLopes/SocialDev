@@ -82,6 +82,10 @@ body{
   transform: scale(1.5);
 }
 
+.post .btn .icon path {
+  fill: var(--color-text);
+}
+
 .post .btn:hover > .icon path {
   fill: rgb(168, 7, 7);
 }

@@ -1,3 +1,8 @@
+*{
+  padding: 0px;
+  margin: 0px;
+}
+
 .posts {
   position: relative;
   top: 7vh;
@@ -30,42 +35,47 @@
   text-align: justify;
 }
 
+.posts .post a{
+  padding: 0px;
+  margin: 0px;
+}
+
 .posts #user{
-font-size: 1.3rem;
-font-weight: bold;
+  font-size: 1.3rem;
+  font-weight: bold;
 }
 
 .posts #title-post {
-font-size: 1rem; 
-font-weight: bolder;
-color: var(--color-text); 
-letter-spacing: 1px; 
+  font-size: 1rem; 
+  font-weight: bolder;
+  color: var(--color-text); 
 }
 
 .posts #content-post {
-position: relative;
-top: -15px;
-font-size: 0.8rem;
-color: var(--color-text);
-white-space: pre-line;
+  position: relative;
+  top: -15px;
+  font-size: 0.8rem;
+  color: var(--color-text);
+  white-space: pre-line;
 }
 
 .posts #data_post{
-padding: 0px;
-margin: 0px;
-right: 0px;
-font-size: 9px;
+  padding: 0px;
+  margin: 0px;
+  right: 0px;
+  font-size: 9px;
 }
 
 .posts .mostrar_mais{
-color:var(--color-1);
+  position: relative;
+  top: -15px;
+  color:var(--color-1);
 }
 
 .posts .mostrar_mais:hover{
-text-decoration: underline;
+  text-decoration: underline;
 }
 
 .posts .create p {
   display: inline-block; 
-  margin-right: 10px; 
 }
