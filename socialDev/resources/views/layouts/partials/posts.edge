@@ -3,16 +3,15 @@
 <div class="posts">
     <ul>
       @each(post in posts)
-        <a href="{{ route('posts.show', { id: post.id }) }}">
-          <li>
-            <div class="post">
-              <div class="create">
-                  <a href="{{ route('profileUser.show', {id: post.user_id})}}">
-                    <p id="user">{{ post.user }}</p>
-                  </a>
-                <p id="data_post">{{ post.hour }} · {{ post.date}}</p>
-              </div>
-              <p id="title-post"> {{ post.title}} </p>
+          <div class="post">
+            <div class="create">
+                <a href="{{ route('profileUser.show', {id: post.user_id})}}">
+                  <p id="user">{{ post.user }}</p>
+                </a>
+              <p id="data_post">{{ post.hour }} · {{ post.date}}</p>
+            </div>
+            <a href="{{ route('posts.show', { id: post.id }) }}">
+              <p id="title-post"> {{ post.title}}</p>
               <P id="content-post">
                 {{ post.content.length > 400 ? post.content.slice(0, 401) + '...' : post.content }}
                 @if (post.content.length > 400)
@@ -20,8 +19,8 @@
                   <a href="{{ route('posts.show', { id: post.id }) }}" class="mostrar_mais">Mostrar mais</a>
                 @endif
               </P>
-            </div>
-          </li>
+            </a>
+          </div>
         </a>
       @endeach
     </ul>

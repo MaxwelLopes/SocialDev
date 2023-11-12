@@ -48,8 +48,13 @@ export default class PostsController {
     }
   }
 
-  public async show({ params, view }: HttpContextContract) {
+  public async show({ params, view, auth }: HttpContextContract) {
     const post = await Post.findOrFail(params.id)
+
+    let del = false;
+    if(post.user_id == auth.user.id){
+      del = true;
+    }
     
     const users = await User.all();
     const user = users.find(user => user.id === post.user_id)
@@ -58,12 +63,21 @@ export default class PostsController {
     post.hour = DateTime.fromISO(post.createdAt).toLocaleString({ hour: '2-digit', minute: '2-digit' });   
     post.date = DateTime.fromISO(post.createdAt).toLocaleString({month: '2-digit', day: '2-digit', year: 'numeric'});
 
-    return view.render('post', { post });
+    return view.render('post', { post, del});
   }
 
   public async edit({}: HttpContextContract) {}
 
   public async update({}: HttpContextContract) {}
 
-  public async destroy({}: HttpContextContract) {}
+  public async destroy({response, auth, params}: HttpContextContract) {
+    const post = await Post.findOrFail(params.id)
+    
+    if(post.user_id == auth.user.id){
+      await post.delete()
+    }
+    
+    return response.redirect().toRoute('home.index');
+
+  }
 }

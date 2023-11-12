@@ -81,7 +81,7 @@ export default class UsersController{
         if (id == auth.user.id) {
             edit = true;
         }
-        console.log(user);
+        
         const posts = await Post.query().where('user_id', id).orderBy('createdAt', 'desc') 
         
         posts.forEach((post) => {    

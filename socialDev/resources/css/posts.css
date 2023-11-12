@@ -1,70 +1,71 @@
 .posts {
-    position: relative;
-    top: 7vh;
-    left: 20vw;
-    right: 20vw;
-    display: flex;
-    width:  calc(60vw - 18px);
-    border-bottom: 1.5px solid var(--color-border);
+  position: relative;
+  top: 7vh;
+  left: 20vw;
+  right: 20vw;
+  display: flex;
+  width:  calc(60vw - 18px);
+  border-bottom: 1.5px solid var(--color-border);
 }
 
 .posts p {
-    font-size: 1.2rem;
-    color: var(--color-text);
+  font-size: 1.2rem;
+  color: var(--color-text);
 }
-  
+
 .posts ul li {
-    list-style: none;
+  list-style: none;
 }
 
 .posts a {
-    text-decoration: none;
-    user-select: none;
-    user-select: text;
-}
-  
-.post {
-    background-color: transparent;
-    border-bottom: 1px solid var(--color-border);
-    padding: 15px;
+  text-decoration: none;
+  user-select: none;
+  user-select: text;
 }
 
-#user{
-  font-size: 1.3rem;
-  font-weight: bold;
+.posts .post {
+  background-color: transparent;
+  border-bottom: 1px solid var(--color-border);
+  padding: 15px;
+  text-align: justify;
 }
 
-#title-post {
-  font-size: 1rem; 
-  font-weight: bolder;
-  color: var(--color-text); 
-  letter-spacing: 1px; 
+.posts #user{
+font-size: 1.3rem;
+font-weight: bold;
 }
 
-#content-post {
-  position: relative;
-  top: -15px;
-  font-size: 0.8rem;
-  color: var(--color-text);
-  white-space: pre-line;
+.posts #title-post {
+font-size: 1rem; 
+font-weight: bolder;
+color: var(--color-text); 
+letter-spacing: 1px; 
 }
 
-#data_post{
-  padding: 0px;
-  margin: 0px;
-  right: 0px;
-  font-size: 9px;
+.posts #content-post {
+position: relative;
+top: -15px;
+font-size: 0.8rem;
+color: var(--color-text);
+white-space: pre-line;
 }
 
-.mostrar_mais{
-  color:var(--color-1);
+.posts #data_post{
+padding: 0px;
+margin: 0px;
+right: 0px;
+font-size: 9px;
 }
 
-.mostrar_mais:hover{
-  text-decoration: underline;
+.posts .mostrar_mais{
+color:var(--color-1);
 }
 
-.create p {
-    display: inline-block; 
-    margin-right: 10px; 
+.posts .mostrar_mais:hover{
+text-decoration: underline;
+}
+
+.posts .create p {
+  display: inline-block; 
+  margin-right: 10px; 
 }

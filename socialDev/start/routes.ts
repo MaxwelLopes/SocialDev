@@ -18,8 +18,8 @@ Route.get('profileUser/:id', 'UsersController.show').as('profileUser.show').midd
 Route.get('/', 'HomeController.index').as('home.index').middleware('auth')  
 
 Route.post('/', 'PostsController.store').as('posts.store')
-
 Route.get('/post/:id', 'PostsController.show').as('posts.show')
+Route.get('/deletePost/:id', 'PostsController.destroy').as('posts.destroy')
 
 Route.get('/settings', async ({ view }: HttpContextContract) => {
     return view.render('settings')
