@@ -1,0 +1,146 @@
+@layout('layouts/main')
+@set('title', 'Documents')
+@set('subtitle', '')
+
+@section('body')
+<div class="login-container">
+  <div class="overflow">
+    <header>
+        <nav>
+            <a class="Twitstagram" href="#">Twitstagram</a>
+            <ul class="nav-list">
+                <li>
+                    <a href="{{ route('sessions.create') }}">Login</a>
+                </li>
+                <li>
+                    <a href="#">Criar Conta</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <div class="conteudo">
+        <div class="apresentacao" id="apresentacao">
+            <h1>Twitstagram</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta eveniet corrupti enim beatae error, ratione praesentium quam distinctio nesciunt voluptatum vero maxime animi, dolor dolorum possimus hic officiis nobis perspiciatis? Lorem ipsum dolor sit amet consectetur adipisicing elit. Est quo vel suscipit optio error ut dolorum deleniti eum libero maiores, illo consectetur dolor fuga perspiciatis, cupiditate aliquid nobis nisi blanditiis. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Pariatur ipsum eaque accusamus iure porro ut saepe animi harum at possimus tenetur laborum, aperiam illo corrupti. Fugiat facere aperiam omnis eum.</p>
+        </div>
+        <div class="cachorrinho">
+            <img src="https://media.giphy.com/media/SwImQhtiNA7io/giphy.gif" alt="GIF de boas-vindas" >
+        </div>
+    </div>
+  </div>
+</div>
+
+
+  <style>
+    :root{
+        --cor0: #F2F2F2;
+        --cor1: #B3CFF2;
+        --cor2: #035AA6;
+        --cor3: #0455BF;
+        --cor4: #010d1d;
+        
+
+        --font-titulo: 'Josefin Sans', sans-serif;
+        --font-texto: 'Source Code Pro', monospace;
+    }
+    *{
+        margin: 0;
+        padding: 0;
+    } 
+    body{
+        background-color: var(--cor0);
+        font-size: 20px;
+    }
+
+    section {
+        height: auto;
+    }
+
+
+    h1, h2{
+        font-family: var(--font-texto);
+        color: var(--cor3);
+    }
+    p{
+        font-family: var(--font-titulo);
+    }
+
+    /*HEADER*/
+    header nav a{
+        color: var(--cor4);
+        text-decoration: none;
+        transition: 0.5s;
+    }
+
+    header nav ul a:hover{
+        opacity: 0.3;
+    }
+
+    .Twitstagram{
+        font-size: 24px;
+        font-weight: bolder;
+        font-family: var(--font-texto);
+    }
+
+    header nav{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        font-family: var(--font-titulo);
+        background-color: var(--cor3);
+        height: 8vh;
+        top: 0;
+        left: 0;
+        right: 0;
+        position: fixed;
+        border-radius: 0px 0px 5px 5px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }   
+
+    .nav-list{
+        list-style: none;
+        display: flex;
+    }
+
+    .nav-list li{
+        letter-spacing: 3px;
+        margin-left: 32px;
+    }
+
+    .conteudo{
+      display: flex;
+    }
+
+    .apresentacao {
+      background-color: #fff;
+      padding: 10px;
+      width: 400px;
+      margin: 100px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+  .apresentacao h1 {
+      font-size: 36px;
+      font-weight: bold;
+  }
+
+  .apresentacao p {
+      font-size: 16px;
+      line-height: 1.5;
+      margin-top: 20px;
+  }
+
+  .cachorrinho{
+    width: 400px;
+    margin: 150px;
+  }
+
+</style>
+
+
+@end
+
+
+
+
