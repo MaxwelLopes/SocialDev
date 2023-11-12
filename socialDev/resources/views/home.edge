@@ -15,7 +15,17 @@
     <div class="new-post">
       <form action="{{ route('posts.store') }}" method="POST">
         <div class="title">
-          <textarea type="title" name="title" placeholder="Título" autocomplete="off" class="title-input"></textarea>
+          
+          @if (value)
+            @if(value.title)
+              <textarea type="title" name="title" placeholder="Título" autocomplete="off" class="title-input">{{value.title}}</textarea>
+            @endif
+          @endif
+
+          @if(!value)
+            <textarea type="title" name="title" placeholder="Título" autocomplete="off" class="title-input"></textarea>
+          @endif
+
           @if (errorMessages)
             <div class="error-messages">
               @if (errorMessages.title)
@@ -26,7 +36,16 @@
         </div>
     
         <div class="content">
+          @if(value)
+            @if(value.content)
+              <textarea type="content" name="content" placeholder="Compartilhe sua história para o mundo!" autocomplete="off" class="content-input">{{value.content}}</textarea>
+            @endif
+          @endif
+
+          @if(!value)
           <textarea type="content" name="content" placeholder="Compartilhe sua história para o mundo!" autocomplete="off" class="content-input"></textarea>
+          @endif
+          
           @if (errorMessages)
             <div class="error-messages">
               @if (errorMessages.content)
