@@ -3,7 +3,10 @@ import CreatePostValidator from 'App/Validators/CreatePostValidator';
 import Post from 'App/Models/Post'
 import User from 'App/Models/User'
 
-const { DateTime } = require('luxon');
+import { DateTime } from 'luxon';
+import PostService from 'App/service/PostService'
+
+
 
 export default class PostsController {
   public async index({}: HttpContextContract) {}
@@ -28,16 +31,11 @@ export default class PostsController {
       return response.redirect().toRoute('home.index')
     }
     catch (error){
-      const posts = await Post.all();
-      const users = await User.all();
+      const post = await Post.all();
+      const user = await User.all();
     
-      posts.forEach((post) => {    
-          post.hour = DateTime.fromISO(post.createdAt).toLocaleString({ hour: '2-digit', minute: '2-digit' });   
-          post.date = DateTime.fromISO(post.createdAt).toLocaleString({month: '2-digit', day: '2-digit', year: 'numeric'});
-
-          const user = users.find(user => user.id === post.user_id)
-          post.user = user?.name;
-      });
+      const postService = new PostService();
+      const posts = postService.formatPosts(post, user);
 
       const value = {}
       value.title =  request.input('title')

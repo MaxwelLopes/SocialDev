@@ -4,7 +4,7 @@ import CreateUserValidator from 'App/Validators/CreateUserValidator';
 import Post from 'App/Models/Post'
 import User from 'App/Models/User'
 
-const { DateTime } = require('luxon');
+import PostService from 'App/service/PostService'
 
 //node ace make:controller User -r
 
@@ -73,23 +73,20 @@ export default class UsersController{
     }
 
     public async show({ params, view, auth }: HttpContextContract) {
-
         const id = params.id;
-        const user = await User.findByOrFail('id', id);
+        const user =  await User.findByOrFail('id', id);
         
         let edit = false;
         if (id == auth.user.id) {
             edit = true;
         }
         
-        const posts = await Post.query().where('user_id', id).orderBy('createdAt', 'desc') 
+        const post = await Post.query().where('user_id', id).orderBy('createdAt', 'desc') 
         
-        posts.forEach((post) => {    
-            post.hour = DateTime.fromISO(post.createdAt).toLocaleString({ hour: '2-digit', minute: '2-digit' });   
-            post.date = DateTime.fromISO(post.createdAt).toLocaleString({month: '2-digit', day: '2-digit', year: 'numeric'});
-            post.user = user.name;
-        });
-
+        const users = [user]
+        const postService = new PostService();
+        const posts = postService.formatPosts(post, users);
+    
         return view.render('profile', {posts, user, edit});
 
         
