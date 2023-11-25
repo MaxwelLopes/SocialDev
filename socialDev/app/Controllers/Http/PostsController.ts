@@ -1,6 +1,6 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import CreatePostValidator from 'App/Validators/CreatePostValidator';
-import Post from 'App/Models/Post'
+import { Post } from 'App/Models/Post'
 import User from 'App/Models/User'
 
 import { DateTime } from 'luxon';

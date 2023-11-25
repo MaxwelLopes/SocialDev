@@ -1,7 +1,7 @@
 import { DateTime } from 'luxon'
-import { BaseModel, HasMany, beforeSave, column, hasMany } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, HasMany, beforeSave, column, hasMany, manyToMany, ManyToMany} from '@ioc:Adonis/Lucid/Orm'
 import Hash from '@ioc:Adonis/Core/Hash'
-import Post from 'App/Models/Post'
+import { Post } from 'App/Models/Post'
 
 export default class User extends BaseModel {
   @column({ isPrimary: true })
@@ -27,6 +27,11 @@ export default class User extends BaseModel {
 
   @column()
   public name: string 
+
+  @manyToMany(() => Post, {
+    pivotTable: 'user_like_posts',
+  })
+  public likedPosts: ManyToMany<typeof Post>
 
   @beforeSave()
   public static async hashPassword (user: User){

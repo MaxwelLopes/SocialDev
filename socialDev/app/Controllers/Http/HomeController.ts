@@ -1,6 +1,6 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
-import Post from 'App/Models/Post'
+import { Post } from 'App/Models/Post'
 import User from 'App/Models/User'
 import PostService from 'App/service/PostService'
 
