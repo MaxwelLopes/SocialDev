@@ -20,6 +20,7 @@ Route.get('/', 'HomeController.index').as('home.index').middleware('auth')
 Route.post('/', 'PostsController.store').as('posts.store')
 Route.get('/post/:id', 'PostsController.show').as('posts.show')
 Route.get('/deletePost/:id', 'PostsController.destroy').as('posts.destroy')
+Route.get('/like/:id', 'PostsController.like').as('posts.like')
 
 Route.get('/settings', async ({ view }: HttpContextContract) => {
     return view.render('settings')
@@ -28,6 +29,7 @@ Route.get('/settings', async ({ view }: HttpContextContract) => {
 Route.get('/editProfile', async ({ view }: HttpContextContract) => {
 return view.render('editProfile')
 }).as('editProfile')
+
 
 // Route.get('/profile', async ({ view }: HttpContextContract) => {
 // return view.render('profile')

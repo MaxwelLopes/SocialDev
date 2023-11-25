@@ -1,5 +1,18 @@
 @entryPointStyles('posts')
 
+<script>
+  window.document.onload = function(e) {
+  }
+
+  async function likebutton(url) {
+    const button = document.getElementById('like')
+    const response = await fetch(url)
+
+    const data = await response.json()
+
+  }
+</script>
+
 <div class="posts">
     <ul>
       @each(post in posts)
@@ -21,8 +34,10 @@
                 @endif
               </P>
             </a>
+            <button onclick="likebutton('{{ route('posts.like', { id: post.id })}}')"  >LIKE</button>
+
           </div>
-        </a>
       @endeach
     </ul>
   </div>
+

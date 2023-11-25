@@ -78,4 +78,24 @@ export default class PostsController {
     return response.redirect().toRoute('home.index');
 
   }
+
+  public async like({ params, auth }: HttpContextContract) {
+    const post = await Post.findOrFail(params.id)
+    const user = await User.findOrFail(auth.user.id)
+    
+    //const service = new PostService()
+    //const liked = service.like(user, post)
+    
+    const liked = await post.liked(user)
+    
+    if (liked) {
+      await user.related('likedPosts').detach([post.id])
+      console.log("deslike")
+    } else {
+      await user.related('likedPosts').attach([post.id])
+      console.log("like")
+    }
+    
+    return { id: post.id, liked: liked }
+  }
 }

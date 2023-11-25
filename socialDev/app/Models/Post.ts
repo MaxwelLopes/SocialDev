@@ -7,12 +7,6 @@ export class Post extends BaseModel {
   @column({ isPrimary: true })
   public id: number
 
-  @column.dateTime({ autoCreate: true })
-  public createdAt: DateTime
-
-  @column.dateTime({ autoCreate: true, autoUpdate: true })
-  public updatedAt: DateTime
-
   @column()
   public title: string 
 
@@ -30,7 +24,20 @@ export class Post extends BaseModel {
   })
   public likedUsers: ManyToMany<typeof User>
 
-  //TODO funcao like...
+  public async liked(user: User) {
+    const post: Post = this
+    await post.load('likedUsers')
+
+    for await (const likedUser of post.likedUsers) {
+      if (user.id === likedUser.id) {
+        return true
+      }
+    }
+    return false
+  }
+  @column.dateTime({ autoCreate: true })
+  public createdAt: DateTime
+
+  @column.dateTime({ autoCreate: true, autoUpdate: true })
+  public updatedAt: DateTime
 }
-
-
