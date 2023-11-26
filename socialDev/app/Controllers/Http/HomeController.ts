@@ -11,6 +11,7 @@ export default class HomeController {
         
         const postService = new PostService();
         const posts = postService.formatPosts(post, user);
+        
 
         return view.render('home', {posts});
       }

@@ -2,9 +2,19 @@
 
 @section('profile')
     @entryPointStyles('profile')
+    
     <div class="profile">
       <div class="timeline"> 
-        {{user.name}}
+        <div class="timeline-menu">
+
+          <div class="usertimeline" id="profile">
+            <button onclick="PostsDisplay(1)">{{user.name}}</button>
+          </div>
+           <div class="usertimeline" id="curtidos">
+            <button onclick="PostsDisplay(2)">Curtidos</button>
+           </div>
+        </div>
+
       </div>
         <div class="presentation">
             <h1 class="name">{{user.name}}</h1>
@@ -17,6 +27,31 @@
               </div>
             @endif
         </div>
-        @include('layouts/partials/posts') 
+        <div id="allposts">
+          @include('layouts/partials/posts')
+        </div> 
+        <div id="likedPost">
+          @include('layouts/partials/postsLike')
+        </div> 
       </div>       
+
+      <script>
+        const allPostsDiv = document.querySelector('.allposts');
+        const likedPostDiv = document.querySelector('.likedPost');
+      
+        function PostsDisplay(displayAtivo) {
+
+          let display1 = document.getElementById('allposts');
+          let display2 = document.getElementById('likedPost');
+
+            if (displayAtivo === 1) {
+                display1.style.display = 'flex';
+                display2.style.display = 'none';
+            } else if (displayAtivo === 2) {
+                display1.style.display = 'none';
+                display2.style.display = 'flex';
+            }
+        }
+      </script>
 @endsection 
+

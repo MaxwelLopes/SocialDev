@@ -95,7 +95,10 @@ export default class PostsController {
       await user.related('likedPosts').attach([post.id])
       console.log("like")
     }
+
     
     return { id: post.id, liked: liked }
   }
+  
+
 }

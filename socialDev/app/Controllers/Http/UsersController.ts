@@ -75,6 +75,7 @@ export default class UsersController{
     public async show({ params, view, auth }: HttpContextContract) {
         const id = params.id;
         const user =  await User.findByOrFail('id', id);
+        const usersL =  await User.all();
         
         let edit = false;
         if (id == auth.user.id) {
@@ -86,8 +87,14 @@ export default class UsersController{
         const users = [user]
         const postService = new PostService();
         const posts = postService.formatPosts(post, users);
+
+        let postsLike = await user
+        .related('likedPosts')
+        .query();
+
+        postsLike = postService.formatPosts(postsLike, usersL);
     
-        return view.render('profile', {posts, user, edit});
+        return view.render('profile', {posts, postsLike, user, edit});
 
         
       }
