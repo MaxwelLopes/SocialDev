@@ -1,56 +1,53 @@
 @entryPointStyles('posts')
 
 <script>
-  async function likebutton(url) {
-      const check = document.getElementById('Layer_1');
-      const response = await fetch(url);
-      const data = await response.json();
+  
+ async function dislikebutton(route) {
+    const response = await fetch(route)
+    const data = await response.json()
 
-      if (data.liked) {
-        check.querySelector('path').setAttribute('fill', '#666');
-      } else {
-        check.querySelector('path').setAttribute('fill', 'red');
-      }
+    let id = route.match(/\d+/)[0];
+    let post = document.getElementById(id.toString());
+    if(post){
+      post.style.display = 'none';
+      console.log(post)
+    }
   }
+
 </script>
 
 <div class="posts">
-    <ul>
-      @each(post in postsLike)
-          <div class="post">
-            <div class="create">
-                <a href="{{ route('profileUser.show', {id: post.user_id})}}">
-                  <p id="user">{{ post.user }}</p>
-                </a>
-              <p id="data_post">{{ post.hour }} · {{ post.date}}</p>
-            </div>
-            <a href="{{ route('posts.show', { id: post.id }) }}">
-              <p id="title-post"> {{ post.title}}</p>
-              <P id="content-post">
-                {{ post.content }}
-                {{--  {{ console.log(post.content.length)}}  --}}
-                @if (post.content.length > 400)
-                  <p style="word-wrap: break-word;"></p>
-                  <a href="{{ route('posts.show', { id: post.id }) }}" class="mostrar_mais">Mostrar mais</a>
-                @endif
-              </P>
-            </a>
-            @if (post.liked)
-            <label class="container">
-              <input id="like" type="checkbox" onclick="likebutton('{{ route('posts.like', { id: post.id })}}')" >
-              <svg class="deslike" id="Layer_1" version="1.0" viewBox="0 0 24 24" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M16.4,4C14.6,4,13,4.9,12,6.3C11,4.9,9.4,4,7.6,4C4.5,4,2,6.5,2,9.6C2,14,12,22,12,22s10-8,10-12.4C22,6.5,19.5,4,16.4,4z" fill="red"></path></svg>
-            </label>
+  <ul>
+    @each(post in postsLike)
+      <div class="post" id="{{post.id}}">
+          
+        <div class="create">
+          <a href="{{ route('profileUser.show', {id: post.user_id})}}">
+            <p id="user">{{ post.user }}</p>
+          </a>
+          <p id="data_post">{{ post.hour }} · {{ post.date}}</p>
+        </div>
+          
+        <a href="{{ route('posts.show', { id: post.id }) }}">
+          <p id="title-post"> {{ post.title}}</p>
+          <P id="content-post">
+            {{ post.content }}
+            {{--  {{ console.log(post.content.length)}}  --}}
+            @if (post.content.length > 400)
+              <p style="word-wrap: break-word;"></p>
+              <a href="{{ route('posts.show', { id: post.id }) }}" class="mostrar_mais">Mostrar mais</a>
             @endif
-
-            @if (!post.liked)
-            <label class="container">
-              <input id="like" type="checkbox" onclick="likebutton('{{ route('posts.like', { id: post.id })}}')" >
-              <svg class="deslike" id="Layer_1" version="1.0" viewBox="0 0 24 24" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M16.4,4C14.6,4,13,4.9,12,6.3C11,4.9,9.4,4,7.6,4C4.5,4,2,6.5,2,9.6C2,14,12,22,12,22s10-8,10-12.4C22,6.5,19.5,4,16.4,4z" fill="#666"></path></svg>
-            </label>
-          @endif
-
-          </div>
-      @endeach
-    </ul>
-  </div>
+          </P>
+        </a>
+          
+        <div class="like"">
+          <label class="container">
+            <input type="checkbox" onclick="dislikebutton('{{ route('posts.like', { id: post.id })}}')">
+            <svg version="1.0" viewBox="0 0 24 24" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M16.4,4C14.6,4,13,4.9,12,6.3C11,4.9,9.4,4,7.6,4C4.5,4,2,6.5,2,9.6C2,14,12,22,12,22s10-8,10-12.4C22,6.5,19.5,4,16.4,4z" fill="red"></path></svg>
+          </label>
+        </div>
+      </div>
+    @endeach
+  </ul>
+</div>
 
