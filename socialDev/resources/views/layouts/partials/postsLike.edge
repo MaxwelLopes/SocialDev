@@ -16,7 +16,7 @@
 
 <div class="posts">
     <ul>
-      @each(post in posts)
+      @each(post in postsLike)
           <div class="post">
             <div class="create">
                 <a href="{{ route('profileUser.show', {id: post.user_id})}}">

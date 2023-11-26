@@ -27,7 +27,7 @@
               </div>
             @endif
         </div>
-        <div id="allposts">
+        <div id="allPosts">
           @include('layouts/partials/posts')
         </div> 
         <div id="likedPost">
@@ -35,13 +35,10 @@
         </div> 
       </div>       
 
-      <script>
-        const allPostsDiv = document.querySelector('.allposts');
-        const likedPostDiv = document.querySelector('.likedPost');
-      
+      <script>     
         function PostsDisplay(displayAtivo) {
 
-          let display1 = document.getElementById('allposts');
+          let display1 = document.getElementById('allPosts');
           let display2 = document.getElementById('likedPost');
 
             if (displayAtivo === 1) {
