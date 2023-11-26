@@ -86,14 +86,15 @@ export default class UsersController{
         
         const users = [user]
         const postService = new PostService();
-        const posts = postService.formatPosts(post, users);
+        const posts = await postService.formatPosts(post, users, auth.user);
 
         let postsLike = await user
         .related('likedPosts')
         .query();
 
-        postsLike = postService.formatPosts(postsLike, usersL);
-    
+        postsLike = await postService.formatPosts(postsLike, usersL, auth.user);
+        
+        console.log(posts)
         return view.render('profile', {posts, postsLike, user, edit});
 
         

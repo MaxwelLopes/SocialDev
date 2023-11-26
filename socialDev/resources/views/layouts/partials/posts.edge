@@ -1,22 +1,17 @@
 @entryPointStyles('posts')
 
 <script>
-  window.document.onload = function(e) {
-  }
-  
   async function likebutton(url) {
-    const button = document.getElementById('like')
-    const response = await fetch(url)
+      const check = document.getElementById('Layer_1');
+      const response = await fetch(url);
+      const data = await response.json();
 
-    const data = await response.json()
-
-    if(data.liked) {
-      button.style.backgroundColor = 'red'
-    } else {
-      button.style.backgroundColor = 'blue'
-    }
+      if (data.liked) {
+        check.querySelector('path').setAttribute('fill', '#666');
+      } else {
+          check.querySelector('path').setAttribute('fill', 'red');
+      }
   }
-
 </script>
 
 <div class="posts">
@@ -40,7 +35,20 @@
                 @endif
               </P>
             </a>
-            <button id="like"  onclick="likebutton('{{ route('posts.like', { id: post.id })}}')"  >LIKE</button>
+            @if (post.liked)
+            <label class="container">
+              <input id="like" type="checkbox" onclick="likebutton('{{ route('posts.like', { id: post.id })}}')" >
+              <svg class="deslike" id="Layer_1" version="1.0" viewBox="0 0 24 24" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M16.4,4C14.6,4,13,4.9,12,6.3C11,4.9,9.4,4,7.6,4C4.5,4,2,6.5,2,9.6C2,14,12,22,12,22s10-8,10-12.4C22,6.5,19.5,4,16.4,4z" fill="red"></path></svg>
+            </label>
+            @endif
+
+            @if (!post.liked)
+            <label class="container">
+              <input id="like" type="checkbox" onclick="likebutton('{{ route('posts.like', { id: post.id })}}')" >
+              <svg class="deslike" id="Layer_1" version="1.0" viewBox="0 0 24 24" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M16.4,4C14.6,4,13,4.9,12,6.3C11,4.9,9.4,4,7.6,4C4.5,4,2,6.5,2,9.6C2,14,12,22,12,22s10-8,10-12.4C22,6.5,19.5,4,16.4,4z" fill="#666"></path></svg>
+            </label>
+          @endif
+            
 
           </div>
       @endeach
