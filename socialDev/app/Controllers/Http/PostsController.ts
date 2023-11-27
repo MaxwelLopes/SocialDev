@@ -35,13 +35,20 @@ export default class PostsController {
       const user = await User.all();
     
       const postService = new PostService();
-      const posts = postService.formatPosts(post, user);
+      const posts = await postService.formatPosts(post, user, auth.user); 
 
       const value = {}
       value.title =  request.input('title')
       value.content = request.input('content')
 
+
       const errorMessages = error.messages;
+      if(errorMessages.title ==  "O campo é obrigatório"){
+        value.title = "Título";
+      }
+      if(errorMessages.content ==  "O campo é obrigatório"){
+        value.content = "Compartilhe sua história para o mundo!";
+      }
       return view.render('home', { posts, value, errorMessages });
     }
   }
