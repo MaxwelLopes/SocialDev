@@ -94,7 +94,6 @@ export default class UsersController{
 
         postsLike = await postService.formatPosts(postsLike, usersL, auth.user);
         
-        console.log(posts)
         return view.render('profile', {posts, postsLike, user, edit});
 
         
