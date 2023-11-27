@@ -1,10 +1,10 @@
 import { DateTime } from 'luxon';
-import User from 'app/Models/User'
+import User from 'App/Models/User'
 import UserLikePost from 'App/Models/UserLikePost'
 
 export default class PostController {
 
-  public async formatPosts(posts: any[], users: any[], user: User) {
+  public async formatPosts(posts: any[], users: any[], user: User) { 
     let postsLike = await user
         .related('likedPosts')
         .query();
@@ -20,9 +20,13 @@ export default class PostController {
       }
       const user = users.find(user => user.id === post.user_id)
       post.user = user?.name;
-      const countLike =  await UserLikePost.query().where('post_id', post.id);
+      let countLike =  await UserLikePost.query().where('post_id', post.id);
       post.countLike = countLike.length;
       post.liked = postsLike.some(likedPost => likedPost.id === post.id);
+
+      const userIdsLiked = countLike.map(like => like.$attributes.user_id);
+      post.listUserLiked = await User.query().whereIn('id', userIdsLiked)    
+      
   }
     return posts;
   }

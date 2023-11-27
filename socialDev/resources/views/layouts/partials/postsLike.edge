@@ -1,33 +1,101 @@
 @entryPointStyles('posts')
-
-{{--  <script>
-  
- async function dislikebutton(route) {
+@entryPointScripts('postsScript')
+<script>
+  async function likebutton(route, id) {
     const response = await fetch(route)
     const data = await response.json()
 
-    let id = route.match(/\d+/)[0];
-    let post = document.getElementById(id.toString());
-    if(post){
-      post.style.display = 'none';
-      console.log(post)
+    let post = document.getElementById(id);
+    
+    let like = post.querySelector('.like');
+    let countlike = like.querySelector('.countLike');
+    
+    let dislike = post.querySelector('.dislike');
+    let countdislike = dislike.querySelector('.countLike');
+    
+    if (dislike.style.display == 'none') {
+      like.style.display = 'none';
+      dislike.style.display = 'flex';
+
+      let value = parseInt(countlike.textContent);
+      if(value == 1){
+        countdislike.style.display = 'none';
+        value -= 1;
+        countdislike.querySelector('p').innerHTML = value;
+      }
+      else{
+        value -= 1;
+        countdislike.querySelector('p').innerHTML = value;
+      } 
+      localStorage.setItem('countDislike', countlike);      
+    }
+    else if(like.style.display == 'none'){
+      dislike.style.display = 'none';
+      like.style.display = 'flex';
+
+      let value = parseInt(countdislike.textContent);
+      if(isNaN(value) || value == 0 ){
+        countlike.querySelector('p').innerHTML = 1;
+      }
+      else{
+        let value = parseInt(countdislike.textContent);
+        value += 1;
+        countlike.querySelector('p').innerHTML = value;
+      }   
+      localStorage.setItem('countLike', countlike);
     }
   }
+  function toggleModal(id) {
+    let post = document.getElementById(id);
+    let modal = post.querySelector('.marginModal');
 
-</script>  --}}
+    if (modal.style.display === 'flex') {
+      modal.style.display = 'none';
+    } else {
+        modal.style.display = 'flex';
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                modal.style.display = 'none';
+            }
+        });
+    }
+  }
+</script>
 
-<div class="posts">
+<div class="posts">  
   <ul>
-    @each(post in postsLike)
-      <div class="post" id="{{post.id}}">
-          
+    @each(post in postsLike)     
+      <div class="post" id="{{ post.id }}">
         <div class="create">
           <a href="{{ route('profileUser.show', {id: post.user_id})}}">
             <p id="user">{{ post.user }}</p>
           </a>
           <p id="data_post">{{ post.hour }} · {{ post.date}}</p>
         </div>
-          
+        
+        <div class="marginModal">
+          <div class="modalLikes">
+            <div class="titleModal">
+              <h1>Quem curtiu</h1>
+              <button onclick="toggleModal({{post.id}})">
+                <svg viewBox="-0.5 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M3 21.32L21 3.32001" stroke="var(--color-text)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M3 3.32001L21 21.32" stroke="var(--color-text)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+              </button>
+            </div>
+            <div class="listUserLiked">
+              <ul>
+                @each(user in post.listUserLiked)
+                <li>
+                  <a href="{{ route('profileUser.show', {id: user.id})}}">
+                    <p id="user">{{ user.name}}</p>
+                  </a> <p id="email">{{ user.email }}</p>
+                </li>
+                @endeach
+              </ul>
+            </div>
+          </div>
+        </div>
+
+
         <a href="{{ route('posts.show', { id: post.id }) }}">
           <p id="title-post"> {{ post.title}}</p>
           <P id="content-post">
@@ -40,14 +108,28 @@
           </P>
         </a>
           
-        <div class="like">
-          <label class="container">
-            <input type="checkbox" onclick="dislikebutton('{{ route('posts.like', { id: post.id })}}')">
-            <svg version="1.0" viewBox="0 0 24 24" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M16.4,4C14.6,4,13,4.9,12,6.3C11,4.9,9.4,4,7.6,4C4.5,4,2,6.5,2,9.6C2,14,12,22,12,22s10-8,10-12.4C22,6.5,19.5,4,16.4,4z" fill="red"></path></svg>
-          </label>
+          <div class="like" style="{{ post.liked ? '' : 'display: none;' }}">
+            <label class="container">
+              <input type="checkbox" onclick="likebutton('{{ route('posts.like', { id: post.id })}}',{{post.id}})">
+              <svg version="1.0" viewBox="0 0 24 24" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M16.4,4C14.6,4,13,4.9,12,6.3C11,4.9,9.4,4,7.6,4C4.5,4,2,6.5,2,9.6C2,14,12,22,12,22s10-8,10-12.4C22,6.5,19.5,4,16.4,4z" fill="red"></path></svg>
+            </label>
+            <div class="countLike"><p onclick="toggleModal({{post.id}})">{{post.countLike > 0 ? post.countLike : ''}}</p></div>
+          </div>
+
+          <div class="dislike" style="{{ !post.liked ? '' : 'display: none;' }}">
+            <label class="container">
+              <input type="checkbox" onclick="likebutton('{{ route('posts.like', { id: post.id })}}', {{post.id}})">
+              <svg version="1.0" viewBox="0 0 24 24" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M16.4,4C14.6,4,13,4.9,12,6.3C11,4.9,9.4,4,7.6,4C4.5,4,2,6.5,2,9.6C2,14,12,22,12,22s10-8,10-12.4C22,6.5,19.5,4,16.4,4z" fill="#666"></path></svg>
+            </label>
+            <div class="countLike"><p onclick="toggleModal({{post.id}})">{{post.countLike > 0 ? post.countLike : ''}}</p></div>
+          </div>
+          
         </div>
-      </div>
-    @endeach
-  </ul>
+      @endeach
+    </ul>
+    
 </div>
+
+
+
 
