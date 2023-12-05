@@ -17,18 +17,18 @@ Route.get('profileUser/:id', 'UsersController.show').as('profileUser.show').midd
 // Pagina Home com Middleware de autenticação
 Route.get('/', 'HomeController.index').as('home.index').middleware('auth')  
 
-Route.post('/', 'PostsController.store').as('posts.store')
-Route.get('/post/:id', 'PostsController.show').as('posts.show')
-Route.get('/deletePost/:id', 'PostsController.destroy').as('posts.destroy')
-Route.get('/like/:id', 'PostsController.like').as('posts.like')
+Route.post('/', 'PostsController.store').as('posts.store').middleware('auth')
+Route.get('/post/:id', 'PostsController.show').as('posts.show').middleware('auth')
+Route.get('/deletePost/:id', 'PostsController.destroy').as('posts.destroy').middleware('auth')
+Route.get('/like/:id', 'PostsController.like').as('posts.like').middleware('auth')
 
 Route.get('/settings', async ({ view }: HttpContextContract) => {
     return view.render('settings')
-  }).as('settings')
+  }).as('settings').middleware('auth')
 
 Route.get('/editProfile', async ({ view }: HttpContextContract) => {
 return view.render('editProfile')
-}).as('editProfile')
+}).as('editProfile').middleware('auth')
 
 
 // Route.get('/profile', async ({ view }: HttpContextContract) => {

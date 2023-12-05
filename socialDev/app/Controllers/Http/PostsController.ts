@@ -54,21 +54,26 @@ export default class PostsController {
   }
 
   public async show({ params, view, auth }: HttpContextContract) {
-    const post = await Post.findOrFail(params.id)
+    try{
+      const post = await Post.findOrFail(params.id)
 
-    let del = false;
-    if(post.user_id == auth.user.id){
-      del = true;
+      let del = false;
+      if(post.user_id == auth.user.id){
+        del = true;
+      }
+      
+      const users = await User.all();
+      const user = users.find(user => user.id === post.user_id)
+      post.user = user?.name;
+  
+      post.hour = DateTime.fromISO(post.createdAt).toLocaleString({ hour: '2-digit', minute: '2-digit' });   
+      post.date = DateTime.fromISO(post.createdAt).toLocaleString({month: '2-digit', day: '2-digit', year: 'numeric'});
+  
+      return view.render('post', { post, del});
     }
-    
-    const users = await User.all();
-    const user = users.find(user => user.id === post.user_id)
-    post.user = user?.name;
-
-    post.hour = DateTime.fromISO(post.createdAt).toLocaleString({ hour: '2-digit', minute: '2-digit' });   
-    post.date = DateTime.fromISO(post.createdAt).toLocaleString({month: '2-digit', day: '2-digit', year: 'numeric'});
-
-    return view.render('post', { post, del});
+    catch{
+      return "PÁGINA NÃO ECONTRADA"
+    }
   }
 
   public async edit({}: HttpContextContract) {}
