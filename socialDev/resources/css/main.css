@@ -254,6 +254,7 @@
     padding: 0px;
     height: 100vh;
     flex-direction: column;
+    right: 20vw;
 }
 
 .main .sidebarR{

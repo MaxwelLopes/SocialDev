@@ -10,11 +10,9 @@ body{
 }
     
 .profile{
-    top: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    position: relative;
+    left: 20vw;
+    width: calc(60vw - 18px);
 }
 
 .timeline{
@@ -33,16 +31,10 @@ body{
 }
 
 .presentation{
-    position: relative;
-    top: 7vh;
-    left: calc(20vw + 1.5px);
-    right: calc(20vw + 1.5px);
     display: flex;
-    height: auto; 
-    width: calc(60vw - 18px);
-    flex-direction: column;
-    background-color: transparent;  
+    margin-top: 7vh;
     border-bottom: 1.5px solid var(--color-border);
+    flex-direction: column;
 }
 
 .presentation .button{

@@ -9,6 +9,11 @@ body{
   background-color: var(--color-background);
   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+.home{
+  position: relative;
+  left: 20vw;
+  width: calc(60vw - 18px);
+}
 
 .home .timeline{
   position: fixed;
@@ -30,12 +35,8 @@ body{
 }
 
 .home .new-post{
-  position: relative;
-  top: 7vh;
-  left: 20vw;
-  right: 20vw;
-  display: flex;
-  width:  calc(60vw - 18px);
+  display:flex;
+  margin-top: 7vh;
   border-bottom: 1.5px solid var(--color-border);
 }
 
