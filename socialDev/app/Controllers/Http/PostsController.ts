@@ -2,6 +2,7 @@ import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import CreatePostValidator from 'App/Validators/CreatePostValidator';
 import { Post } from 'App/Models/Post'
 import User from 'App/Models/User'
+import UserLikePost from 'App/Models/UserLikePost'
 
 import { DateTime } from 'luxon';
 import PostService from 'App/service/PostService'
@@ -100,17 +101,14 @@ export default class PostsController {
     
     const liked = await post.liked(user)
     
+    
     if (liked) {
       await user.related('likedPosts').detach([post.id])
-      console.log("deslike")
+      //console.log("deslike")
     } else {
       await user.related('likedPosts').attach([post.id])
-      console.log("like")
-    }
-
-    
+      //console.log("like")
+    } 
     return { id: post.id, liked: liked }
   }
-  
-
 }

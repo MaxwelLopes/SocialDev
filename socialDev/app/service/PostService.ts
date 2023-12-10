@@ -25,8 +25,7 @@ export default class PostController {
       post.liked = postsLike.some(likedPost => likedPost.id === post.id);
 
       const userIdsLiked = countLike.map(like => like.$attributes.user_id);
-      post.listUserLiked = await User.query().whereIn('id', userIdsLiked)    
-      
+      post.listUserLiked = await User.query().whereIn('id', userIdsLiked)       
   }
     return posts;
   }

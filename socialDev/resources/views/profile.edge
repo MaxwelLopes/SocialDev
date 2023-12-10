@@ -37,16 +37,15 @@
 
       <script>     
         function PostsDisplay(displayAtivo) {
-
           let display1 = document.getElementById('allPosts');
           let display2 = document.getElementById('likedPost');
 
             if (displayAtivo === 1) {
-                display1.style.display = 'flex';
+                display1.style.display = '';
                 display2.style.display = 'none';
             } else if (displayAtivo === 2) {
                 display1.style.display = 'none';
-                display2.style.display = 'flex';
+                display2.style.display = '';
             }
         }
       </script>

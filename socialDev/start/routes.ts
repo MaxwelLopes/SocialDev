@@ -21,6 +21,7 @@ Route.post('/', 'PostsController.store').as('posts.store').middleware('auth')
 Route.get('/post/:id', 'PostsController.show').as('posts.show').middleware('auth')
 Route.get('/deletePost/:id', 'PostsController.destroy').as('posts.destroy').middleware('auth')
 Route.get('/like/:id', 'PostsController.like').as('posts.like').middleware('auth')
+Route.get('/liked/:id', 'PostsController.listUserLiked').as('posts.listUserLiked').middleware('auth')
 
 Route.get('/settings', async ({ view }: HttpContextContract) => {
     return view.render('settings')

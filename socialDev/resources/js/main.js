@@ -1,6 +1,5 @@
 const $html = document.querySelector('html');
 const $checkbox = document.querySelector('#switch');
-
 // Função para definir um cookie
 function setCookie(name, value, days) {
     const date = new Date();
