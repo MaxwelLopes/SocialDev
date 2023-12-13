@@ -20,6 +20,11 @@ export default class PostController {
       }
       const user = users.find(user => user.id === post.user_id)
       post.user = user?.name;
+
+      // Adicione a propriedade 'photo' ao post
+      const postUser = users.find((user) => user.id === post.user_id);
+      post.userPhoto = postUser?.photo;
+
       let countLike =  await UserLikePost.query().where('post_id', post.id);
       post.countLike = countLike.length;
       post.liked = postsLike.some(likedPost => likedPost.id === post.id);

@@ -1,5 +1,6 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import CreateUserValidator from 'App/Validators/CreateUserValidator';
+import Application from '@ioc:Adonis/Core/Application'
 
 import { Post } from 'App/Models/Post'
 import User from 'App/Models/User'
@@ -17,14 +18,26 @@ export default class UsersController{
     //Post
     public async store({ request, response, view }:HttpContextContract){
 
+        const photo = request.file('photo', {
+            size: '2mb',
+            extnames: ['jpg', 'png', 'gif'],
+        })
+
+        if(photo){
+            await photo.move(Application.publicPath('photos'));
+        }
+        
         const name = request.input('name')
         const email = request.input('email')
         const password = request.input('password')
+        console.log(photo)
+        console.log(name)
+        console.log(email)
+        console.log(password)
 
         try{
             await request.validate(CreateUserValidator);
-            
-            await User.create({ name, email, password })
+            await User.create({ name, email, password, photo: photo?.fileName  })
 
             return response.redirect().toRoute('sessions.create')
         }
@@ -76,10 +89,16 @@ export default class UsersController{
         try{
             const id = params.id;
             const user =  await User.findByOrFail('id', id);
+            const userLog = auth.user;
             const usersL =  await User.all();
+
+            const followed =  await userLog?.followed(user, userLog);
+            console.log(followed)
+
+            
         
             let edit = false;
-            if (id == auth.user.id) {
+            if (id == userLog.id) {
                 edit = true;
             }
             
@@ -95,11 +114,32 @@ export default class UsersController{
 
             postsLike = await postService.formatPosts(postsLike, usersL, auth.user);
             
-            return view.render('profile', {posts, postsLike, user, edit});
+            return view.render('profile', {posts, postsLike, user, edit, followed});
         }
         catch{
             return "PÁGINA NÃO ENCONTRADA";
         }
     }
-}
+
+    public async follow({ auth, params }: HttpContextContract) {
+        const user = await User.findOrFail(params.id);
+        const userLog = await User.findOrFail(auth.user.id);
+      
+        const isFollowing = await userLog.followed(user);
+      
+        if (isFollowing) {
+          // Se já está seguindo, remove a relação de seguidor
+          await userLog.related('following').detach([user.id]);
+          console.log("unfollow");
+        } else {
+          // Se não está seguindo, adiciona a relação de seguidor
+          await userLog.related('following').attach([user.id]);
+          console.log("follow");
+        }
+      
+        return { id: user.id, followed: !isFollowing }; // Invertendo o estado de seguindo/não seguindo
+      }
+      
+}      
+      
 

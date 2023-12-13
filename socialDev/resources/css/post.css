@@ -49,6 +49,12 @@ body{
   font-size: 9px;
 }
 
+#photo{
+  width: 30px;
+  height: 30px;
+  background-color: red;
+}
+
 .post .title {
   font-size: 1rem; 
   font-weight: bolder;

@@ -27,6 +27,41 @@ export default class User extends BaseModel {
 
   @column()
   public name: string 
+  
+  @column()
+  public photo: string
+
+  @manyToMany(() => User, {
+    pivotTable: 'followers',
+    localKey: 'id',
+    pivotForeignKey: 'user_id',
+    pivotRelatedForeignKey: 'follower_id',
+  })
+  public following: ManyToMany<typeof User>
+
+  @manyToMany(() => User, {
+    pivotTable: 'followers',
+    localKey: 'id',
+    pivotForeignKey: 'follower_id',
+    pivotRelatedForeignKey: 'user_id',
+  })
+  public followers: ManyToMany<typeof User>
+
+  public async followed(userToCheck: User) {
+    const userLog: User = this; 
+    await userLog.load('following'); 
+    await userToCheck.load('followers');
+    
+    const followers = await userToCheck.related('followers').query();
+    
+    for (const followedUser of followers) {
+      if (userLog.id === followedUser.id) {
+        return true;
+      }
+    }
+
+    return false;
+  }
 
   @manyToMany(() => Post, {
     pivotTable: 'user_like_posts',

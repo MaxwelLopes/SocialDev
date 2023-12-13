@@ -111,6 +111,28 @@ body{
     align-items: center;
 }
 
+.follow {
+    padding: 10px;
+}
+
+.follow button{
+    display: inline-block;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--color-text);
+    background-color: for;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+}
+
+.follow .button-unfollow button{
+    background-color: var(--color-2);
+}
+
 
 
 

@@ -65,13 +65,25 @@ function toggleModal(id, route) {
 
 <div class="posts">  
   <ul>
-    @each(post in posts)     
+    @each(post in posts)  
       <div class="post" id="{{ post.id }}">
+
+        <div class="foto">
+          <img id="photo" src="{{`/photos/${post.userPhoto}`}}" alt="">
+        </div>
+
+      <div class="content">
+
         <div class="create">
+        
           <a href="{{ route('profileUser.show', {id: post.user_id})}}">
-            <p id="user">{{ post.user }}</p>
+            <p class="create-div" id="user">{{ post.user }}</p>
           </a>
-          <p id="data_post">{{ post.hour }} · {{ post.date}}</p>
+          <div id="data">
+            <p class="create-div" id="data_post">{{ post.hour }} · {{ post.date}}</p>
+
+          </div>
+         
         </div>
         
         <div class="marginModal">
@@ -124,11 +136,10 @@ function toggleModal(id, route) {
             </label>
             <div class="countLike"><p onclick="toggleModal({{post.id}})">{{post.countLike > 0 ? post.countLike : ''}}</p></div>
           </div>
-          
         </div>
+      </div>
       @endeach
     </ul>
-    
 </div>
 
 

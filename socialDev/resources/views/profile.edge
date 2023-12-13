@@ -1,6 +1,24 @@
 @layout('layouts/main')
 
+
+
 @section('profile')
+<script>
+  function followbutton(route, follow){
+    fetch(route)
+    let buttonFollow = document.querySelector('.button-follow');
+    let buttonUnfollow = document.querySelector('.button-unfollow');
+
+    if (buttonFollow.style.display == 'none') {
+      buttonFollow.style.display = '';
+      buttonUnfollow.style.display = 'none';
+    } 
+    else {
+      buttonFollow.style.display = 'none';
+      buttonUnfollow.style.display = '';
+    }
+  }
+</script>
     @entryPointStyles('profile')
     
     <div class="profile">
@@ -19,6 +37,9 @@
         <div class="presentation">
             <h1 class="name">{{user.name}}</h1>
             <p class="email">{{user.email}}</p>
+
+            
+
             @if(edit)
               <div class="button">
                   <a href="{{ route('editProfile') }}">
@@ -26,13 +47,20 @@
                   </a>
               </div>
             @endif
+
+            <div class="follow" style="{{ auth.user.id == user.id ? 'display: none;' : '' }}">
+             
+              <div class="button-unfollow" style="{{ followed ? '' : 'display: none;' }}">
+                <button onclick="followbutton('{{ route('user.follow', {id: user.id}) }}', {{follow}})"> seguindo </button>
+              </div>
+
+              <div class="button-follow" style="{{ followed ? 'display: none;' : '' }}">
+                <button onclick="followbutton('{{ route('user.follow', {id: user.id}) }}', {{follow}})"> seguir </button>
+              </div>         
+              
+            </div>
         </div>
-        <div id="allPosts">
-          @include('layouts/partials/posts')
-        </div> 
-        <div id="likedPost" style="display: none;">
-          @include('layouts/partials/postsLike')
-        </div> 
+        @include('layouts/partials/posts')
       </div>       
 
       <script>     

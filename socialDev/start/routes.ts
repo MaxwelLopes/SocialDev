@@ -13,8 +13,11 @@ Route.post('updateUser', 'UsersController.update').as('updateUser.update')
 Route.get('deleteUser', 'UsersController.destroy').as('createUser.destroy')
 Route.post('createUser', 'UsersController.store').as('createUser.store')
 Route.get('profileUser/:id', 'UsersController.show').as('profileUser.show').middleware('auth')
+Route.get('/follow/:id', 'UsersController.follow').as('user.follow').middleware('auth')
 
-// Pagina Home com Middleware de autenticação
+
+
+
 Route.get('/', 'HomeController.index').as('home.index').middleware('auth')  
 
 Route.post('/', 'PostsController.store').as('posts.store').middleware('auth')
