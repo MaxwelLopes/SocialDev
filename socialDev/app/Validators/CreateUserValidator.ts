@@ -27,6 +27,10 @@ export default class CreatePostValidator extends BaseValidator {
    *    ```
    */
   public schema = schema.create({
+
+
+    //Verificar se o arquivo existe
+
     name: schema.string({},[
       rules.regex(/^[A-Za-z\s]+$/),
     ]),

@@ -3,8 +3,29 @@
 @section('home')
 @entryPointStyles('simple')
 
+<script>
+  function previewImage() {
+    var input = document.getElementById('photo-icon');
+    var preview = document.getElementById('preview');
+
+    // Verifica se um arquivo foi selecionado
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+
+      // Define a função que será chamada quando a leitura for concluída
+      reader.onload = function (e) {
+        // Atualiza o atributo src da imagem para a URL da imagem carregada
+        preview.src = e.target.result;
+      }
+
+      // Lê o conteúdo do arquivo como uma URL de dados
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+</script>
+
+
   <div class="form-box">
-    <h1>Cadastrar</h1>
     <form action="{{ route('users.store') }}" method="POST" enctype="multipart/form-data">
       
       {{--  campo nome  --}}
@@ -19,7 +40,19 @@
           </ul>
         </div>
       @endif
-      <input type="file" name="photo">
+      <div class="content">
+
+      <div class="icon">
+        <img src="photos/edit4.png" alt="">
+      </div>
+      <!-- Input escondido -->
+      <input id="photo-icon" type="file" name="photo" onchange="previewImage()">
+      <!-- Botão circular personalizado -->
+      <label for="photo-icon" class="custom-button">
+        <img id="preview" src="photos/defaultImage.jpg" alt="">
+      </label>
+    </div>
+    <div class="login-content">
       <input type="name" name="name" placeholder="Nome" value="{{  name ? name : '' }}">
       
       {{--  campo email  --}}
@@ -65,6 +98,8 @@
       <input type="password" name="confirmpassword" placeholder="ConfirmPassword">
       
       <button type="submit">Cadastrar</button>
+    </div>
     </form>
   </div>
+
 @endsection

@@ -140,6 +140,5 @@ export default class UsersController{
         return { id: user.id, followed: !isFollowing }; // Invertendo o estado de seguindo/não seguindo
       }
       
-}      
-      
+}    
 

@@ -1,0 +1,81 @@
+@layout('layouts/main')
+
+
+
+@section('profile')
+<script>
+  function followbutton(route, follow){
+    fetch(route)
+    let buttonFollow = document.querySelector('.button-follow');
+    let buttonUnfollow = document.querySelector('.button-unfollow');
+
+    if (buttonFollow.style.display == 'none') {
+      buttonFollow.style.display = '';
+      buttonUnfollow.style.display = 'none';
+    } 
+    else {
+      buttonFollow.style.display = 'none';
+      buttonUnfollow.style.display = '';
+    }
+  }
+</script>
+    @entryPointStyles('profile')
+    
+    <div class="profile">
+      <div class="timeline"> 
+        <div class="timeline-menu">
+
+          <div class="usertimeline" id="profile">
+            <button onclick="PostsDisplay(1)">{{user.name}}</button>
+          </div>
+           <div class="usertimeline" id="curtidos">
+            <button onclick="PostsDisplay(2)">Curtidos</button>
+           </div>
+        </div>
+
+      </div>
+        <div class="presentation">
+            <h1 class="name">{{user.name}}</h1>
+            <p class="email">{{user.email}}</p>
+
+            
+
+            @if(edit)
+              <div class="button">
+                  <a href="{{ route('editProfile') }}">
+                    <button> EDITAR PERFIL </button>
+                  </a>
+              </div>
+            @endif
+
+            <div class="follow" style="{{ auth.user.id == user.id ? 'display: none;' : '' }}">
+             
+              <div class="button-unfollow" style="{{ followed ? '' : 'display: none;' }}">
+                <button onclick="followbutton('{{ route('user.follow', {id: user.id}) }}', {{follow}})"> seguindo </button>
+              </div>
+
+              <div class="button-follow" style="{{ followed ? 'display: none;' : '' }}">
+                <button onclick="followbutton('{{ route('user.follow', {id: user.id}) }}', {{follow}})"> seguir </button>
+              </div>         
+              
+            </div>
+        </div>
+        @include('layouts/partials/posts')
+      </div>       
+
+      <script>     
+        function PostsDisplay(displayAtivo) {
+          let display1 = document.getElementById('allPosts');
+          let display2 = document.getElementById('likedPost');
+
+            if (displayAtivo === 1) {
+                display1.style.display = '';
+                display2.style.display = 'none';
+            } else if (displayAtivo === 2) {
+                display1.style.display = 'none';
+                display2.style.display = '';
+            }
+        }
+      </script>
+@endsection 
+

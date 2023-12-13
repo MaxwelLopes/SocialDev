@@ -29,11 +29,30 @@ body{
     backdrop-filter: blur(5px);
     color: var(--color-text);
 }
+.all-content{
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1.5px solid var(--color-border);
+}
+.photo-content{
+    width: 95px;
+    height: 95px;
+    padding-top: 8vh;
+    padding-left: 1.2vh;
+    
+}
+
+.photo-content img{
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    box-shadow: 0px 0px 5px 1px var(--color-border);
+}
+
 
 .presentation{
     display: flex;
     margin-top: 7vh;
-    border-bottom: 1.5px solid var(--color-border);
     flex-direction: column;
 }
 
@@ -111,6 +130,11 @@ body{
     align-items: center;
 }
 
+
+.usertimeline button:hover{
+    cursor: pointer;
+}
+
 .follow {
     padding: 10px;
 }
@@ -132,6 +156,9 @@ body{
 .follow .button-unfollow button{
     background-color: var(--color-2);
 }
+
+
+
 
 
 

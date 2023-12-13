@@ -1,7 +1,5 @@
 @layout('layouts/main')
 
-
-
 @section('profile')
 <script>
   function followbutton(route, follow){
@@ -34,12 +32,17 @@
         </div>
 
       </div>
+
+      <div class="all-content">
+
+      
+      <div class="photo-content">
+        <img id="photoID" src="{{`/photos/${user.photo}`}}" alt="">
+      </div>
+      
         <div class="presentation">
             <h1 class="name">{{user.name}}</h1>
             <p class="email">{{user.email}}</p>
-
-            
-
             @if(edit)
               <div class="button">
                   <a href="{{ route('editProfile') }}">
@@ -47,7 +50,6 @@
                   </a>
               </div>
             @endif
-
             <div class="follow" style="{{ auth.user.id == user.id ? 'display: none;' : '' }}">
              
               <div class="button-unfollow" style="{{ followed ? '' : 'display: none;' }}">
@@ -60,7 +62,15 @@
               
             </div>
         </div>
-        @include('layouts/partials/posts')
+      </div>
+
+
+        <div id="allPosts">
+          @include('layouts/partials/posts')
+        </div> 
+        <div id="likedPost" style="display: none;">
+          @include('layouts/partials/postsLike')
+        </div> 
       </div>       
 
       <script>     

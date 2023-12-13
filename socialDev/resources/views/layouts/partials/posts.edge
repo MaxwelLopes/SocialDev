@@ -1,7 +1,6 @@
 @entryPointStyles('posts')
 @entryPointScripts('postsScript')
 
-
 <script>
   function likebutton(route, id) {
   fetch(route)
@@ -65,7 +64,7 @@ function toggleModal(id, route) {
 
 <div class="posts">  
   <ul>
-    @each(post in posts)  
+    @each(post in posts)     
       <div class="post" id="{{ post.id }}">
 
         <div class="foto">
@@ -98,16 +97,24 @@ function toggleModal(id, route) {
               <ul>
                 @each(user in post.listUserLiked)
                 <li>
-                  <a href="{{ route('profileUser.show', {id: user.id})}}">
-                    <p id="user">{{ user.name}}</p>
-                  </a> <p id="email">{{ user.email }}</p>
+
+                  <div class="all-data">
+                    <div class="photo-data">
+                      <a href="{{ route('profileUser.show', {id: user.id})}}"><img src="{{`/photos/${user.photo}`}}" alt=""></a>
+                    </div>
+                    <div class="normal-data">
+                      <a href="{{ route('profileUser.show', {id: user.id})}}">
+                        <p id="user">{{ user.name}}</p>
+                      </a>
+                      <p id="email">{{ user.email }}</p>
+                    </div>
+                  </div>
                 </li>
                 @endeach
               </ul>
             </div>
           </div>
         </div>
-
 
         <a href="{{ route('posts.show', { id: post.id }) }}">
           <p id="title-post"> {{ post.title}}</p>
