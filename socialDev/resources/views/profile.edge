@@ -1,19 +1,31 @@
 @layout('layouts/main')
 
+
+
 @section('profile')
 <script>
   function followbutton(route, follow){
     fetch(route)
     let buttonFollow = document.querySelector('.button-follow');
     let buttonUnfollow = document.querySelector('.button-unfollow');
+    let counterFollowers = document.getElementById('follower')
 
     if (buttonFollow.style.display == 'none') {
       buttonFollow.style.display = '';
       buttonUnfollow.style.display = 'none';
+      
+      let valueFollowers = parseInt(counterFollowers.textContent);
+      valueFollowers = valueFollowers - 1;
+      counterFollowers.textContent = valueFollowers;
     } 
     else {
       buttonFollow.style.display = 'none';
       buttonUnfollow.style.display = '';
+
+      let valueFollowers = parseInt(counterFollowers.textContent);
+      valueFollowers = valueFollowers + 1;
+      counterFollowers.textContent = valueFollowers;
+     
     }
   }
 </script>
@@ -43,6 +55,10 @@
         <div class="presentation">
             <h1 class="name">{{user.name}}</h1>
             <p class="email">{{user.email}}</p>
+            <div class="followcounter">
+              <p id="following">{{counterFollowing}}</p> <span style="color: rgb(105, 105, 105);">seguindo</span> 
+              &nbsp;&nbsp; &nbsp;&nbsp;
+              <p id="follower">{{counterFollowers}}</p> <span style="color: rgb(105, 105, 105);">seguidores</span></div>
             @if(edit)
               <div class="button">
                   <a href="{{ route('editProfile') }}">

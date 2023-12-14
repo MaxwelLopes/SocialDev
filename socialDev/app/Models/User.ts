@@ -49,7 +49,7 @@ export default class User extends BaseModel {
 
   public async followed(userToCheck: User) {
     const userLog: User = this; 
-    await userLog.load('following'); 
+    // await userLog.load('following'); 
     await userToCheck.load('followers');
     
     const followers = await userToCheck.related('followers').query();

@@ -4,6 +4,7 @@ import Application from '@ioc:Adonis/Core/Application'
 
 import { Post } from 'App/Models/Post'
 import User from 'App/Models/User'
+import Follow from 'App/Models/Follow'
 
 import PostService from 'App/service/PostService'
 
@@ -93,10 +94,8 @@ export default class UsersController{
             const usersL =  await User.all();
 
             const followed =  await userLog?.followed(user, userLog);
-            console.log(followed)
-
+            console.log(followed)            
             
-        
             let edit = false;
             if (id == userLog.id) {
                 edit = true;
@@ -104,6 +103,12 @@ export default class UsersController{
             
             const post = await Post.query().where('user_id', id).orderBy('createdAt', 'desc') 
             
+            let counterFollowing = await Follow.query().where('follower_id', auth.user.id)        
+            let counterFollowers = await Follow.query().where('user_id', auth.user.id)
+            counterFollowers = counterFollowers.length
+            counterFollowing = counterFollowing.length
+        
+
             const users = [user]
             const postService = new PostService();
             const posts = await postService.formatPosts(post, users, auth.user);
@@ -114,7 +119,7 @@ export default class UsersController{
 
             postsLike = await postService.formatPosts(postsLike, usersL, auth.user);
             
-            return view.render('profile', {posts, postsLike, user, edit, followed});
+            return view.render('profile', {posts, postsLike, user, edit, followed, counterFollowing, counterFollowers});
         }
         catch{
             return "PÁGINA NÃO ENCONTRADA";
