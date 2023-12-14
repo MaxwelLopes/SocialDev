@@ -268,7 +268,7 @@
 .main .sidebarR{
     position: fixed;
     right: 0;
-    justify-content: center;
+    justify-content:first baseline;
     display: flex;
     margin: 0px;
     padding: 0px;
@@ -276,11 +276,13 @@
     height: 100vh;
     background-color: transparent;  
     border-left: 1.5px solid var(--color-border);
+    flex-direction: column;
 }
 
 .main .sidebarR .dark-mode {
     display: flex;
     padding: 10px;
+    justify-content: baseline;
 }
 
 /* The switch - the box around the slider */
@@ -338,6 +340,10 @@
     color: var(--color-text);
 }
   
+
+.main .search{
+    padding: 10px;
+}
 
   
 /*==============================================*/

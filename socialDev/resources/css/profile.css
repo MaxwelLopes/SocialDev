@@ -155,6 +155,7 @@ body{
 
 .follow .button-unfollow button{
     background-color: var(--color-2);
+    color:#fff;
 }
 
 .followcounter{

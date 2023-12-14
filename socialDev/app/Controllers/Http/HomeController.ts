@@ -13,5 +13,5 @@ export default class HomeController {
         const posts = await postService.formatPosts(post, user, auth.user);
         
         return view.render('home', {posts});
-      }
     }
+}

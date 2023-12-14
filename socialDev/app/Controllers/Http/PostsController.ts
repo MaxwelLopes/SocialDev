@@ -73,7 +73,7 @@ export default class PostsController {
       return view.render('post', { post, del});
     }
     catch{
-      return "PÁGINA NÃO ECONTRADA"
+      return view.render('errors/not-found');
     }
   }
 

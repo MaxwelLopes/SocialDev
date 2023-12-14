@@ -31,11 +31,6 @@ export default class UsersController{
         const name = request.input('name')
         const email = request.input('email')
         const password = request.input('password')
-        console.log(photo)
-        console.log(name)
-        console.log(email)
-        console.log(password)
-
         try{
             await request.validate(CreateUserValidator);
             await User.create({ name, email, password, photo: photo?.fileName  })
@@ -93,8 +88,7 @@ export default class UsersController{
             const userLog = auth.user;
             const usersL =  await User.all();
 
-            const followed =  await userLog?.followed(user, userLog);
-            console.log(followed)            
+            const followed =  await userLog?.followed(user, userLog);        
             
             let edit = false;
             if (id == userLog.id) {
@@ -103,8 +97,8 @@ export default class UsersController{
             
             const post = await Post.query().where('user_id', id).orderBy('createdAt', 'desc') 
             
-            let counterFollowing = await Follow.query().where('follower_id', auth.user.id)        
-            let counterFollowers = await Follow.query().where('user_id', auth.user.id)
+            let counterFollowing = await Follow.query().where('user_id', user.id)        
+            let counterFollowers = await Follow.query().where('follower_id', user.id)
             counterFollowers = counterFollowers.length
             counterFollowing = counterFollowing.length
         
@@ -122,7 +116,7 @@ export default class UsersController{
             return view.render('profile', {posts, postsLike, user, edit, followed, counterFollowing, counterFollowers});
         }
         catch{
-            return "PÁGINA NÃO ENCONTRADA";
+            return view.render('errors/not-found');
         }
     }
 
@@ -135,11 +129,11 @@ export default class UsersController{
         if (isFollowing) {
           // Se já está seguindo, remove a relação de seguidor
           await userLog.related('following').detach([user.id]);
-          console.log("unfollow");
+          
         } else {
           // Se não está seguindo, adiciona a relação de seguidor
           await userLog.related('following').attach([user.id]);
-          console.log("follow");
+          
         }
       
         return { id: user.id, followed: !isFollowing }; // Invertendo o estado de seguindo/não seguindo

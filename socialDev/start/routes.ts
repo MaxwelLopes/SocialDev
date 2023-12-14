@@ -32,6 +32,10 @@ Route.get('/editProfile', async ({ view }: HttpContextContract) => {
 return view.render('editProfile')
 }).as('editProfile').middleware('auth')
 
+Route.any('*', async ({ view }) => {
+  return view.render('errors/not-found');
+}).as('not-found')
+
 
 // Route.get('/profile', async ({ view }: HttpContextContract) => {
 // return view.render('profile')
