@@ -2,68 +2,68 @@
   "entrypoints": {
     "app": {
       "css": [
-        "http://localhost:49536/assets/app.css"
+        "http://localhost:8080/assets/app.css"
       ],
       "js": [
-        "http://localhost:49536/assets/app.js"
+        "http://localhost:8080/assets/app.js"
       ]
     },
     "mainScript": {
       "js": [
-        "http://localhost:49536/assets/mainScript.js"
+        "http://localhost:8080/assets/mainScript.js"
       ]
     },
     "postsScript": {
       "js": [
-        "http://localhost:49536/assets/postsScript.js"
+        "http://localhost:8080/assets/postsScript.js"
       ]
     },
     "mainCss": {
       "css": [
-        "http://localhost:49536/assets/mainCss.css"
+        "http://localhost:8080/assets/mainCss.css"
       ],
       "js": [
-        "http://localhost:49536/assets/mainCss.js"
+        "http://localhost:8080/assets/mainCss.js"
       ]
     },
     "simple": {
       "css": [
-        "http://localhost:49536/assets/simple.css"
+        "http://localhost:8080/assets/simple.css"
       ],
       "js": [
-        "http://localhost:49536/assets/simple.js"
+        "http://localhost:8080/assets/simple.js"
       ]
     },
     "home": {
       "css": [
-        "http://localhost:49536/assets/home.css"
+        "http://localhost:8080/assets/home.css"
       ],
       "js": [
-        "http://localhost:49536/assets/home.js"
+        "http://localhost:8080/assets/home.js"
       ]
     },
     "post": {
       "css": [
-        "http://localhost:49536/assets/post.css"
+        "http://localhost:8080/assets/post.css"
       ],
       "js": [
-        "http://localhost:49536/assets/post.js"
+        "http://localhost:8080/assets/post.js"
       ]
     },
     "profile": {
       "css": [
-        "http://localhost:49536/assets/profile.css"
+        "http://localhost:8080/assets/profile.css"
       ],
       "js": [
-        "http://localhost:49536/assets/profile.js"
+        "http://localhost:8080/assets/profile.js"
       ]
     },
     "posts": {
       "css": [
-        "http://localhost:49536/assets/posts.css"
+        "http://localhost:8080/assets/posts.css"
       ],
       "js": [
-        "http://localhost:49536/assets/posts.js"
+        "http://localhost:8080/assets/posts.js"
       ]
     }
   }
