@@ -4,7 +4,7 @@ Este repositório contém o projeto TwinstaGram, uma rede social desenvolvida co
 
 ## Descrição
 
-TwinstaGram é uma rede social inspirada no Twitter, permitindo aos usuários fazerem postagens, curtidas e comentários. Além disso, os usuários podem seguir uns aos outros para verem as postagens em seus feeds.
+TwinstaGram é uma rede social inspirada no Twitter, permitindo aos usuários fazer postagens, curtir e comentar. Além disso, os usuários podem seguir uns aos outros para ver as postagens em seus feeds.
 
 ## Instalação e Execução
 
