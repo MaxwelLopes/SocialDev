@@ -24,7 +24,7 @@ TwinstaGram é uma rede social inspirada no Twitter, permitindo aos usuários fa
     ```
 
 ### **Execução**
-    npm ace serve --watch
+    node ace serve --watch
 
 ## Funcionalidades Principais
 
